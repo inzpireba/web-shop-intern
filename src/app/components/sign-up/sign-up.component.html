@@ -1,9 +1,7 @@
-<body>
-    <div class="img-signup">
-        <img src="/assets/signup.png">
-    </div>
+<div class="main-reg-container">
+
     <div class="container">
-        <form #UserRegistrationForm="ngForm">
+        <form #UserRegistrationForm="ngForm" (ngSubmit)="onSubmit(UserRegistrationForm.value)">
             <h1>Sign Up</h1>
             <h2>Let's sign up first and start shopping!</h2>
             <div class="nameGroup">
@@ -48,4 +46,7 @@
             </div>
         </form>
     </div>
-</body>
+    <div class="img-signup">
+       
+    </div>
+</div>
