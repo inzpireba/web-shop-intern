@@ -2,7 +2,7 @@
     <div class="img-container">
     </div>
     <div class="form-container">
-        <form>
+        <form #UserLoginForm="ngForm" (ngSubmit)="onSubmit(UserLoginForm.value)">
         <p class="login-label">Login</p>
         <div class="formcontainer">
         <hr class="line"/>
@@ -14,7 +14,7 @@
           type="text" placeholder="Enter your email" name="uname" required>
           <label for="psw"><strong>Password</strong></label>
           <input 
-          ngModel name="password" #password="ngModel" minlength="3"
+          ngModel name="password" #password="ngModel" minlength="6"
           type="password" placeholder="Enter your password" name="psw" required [type]="hide ? 'password': 'text'">
           <i id="shwpw" class="fa" (click)="hide=!hide" aria-hidden="true" [ngClass]="{
             'fa-eye': !hide,
@@ -34,14 +34,14 @@
     </div>
     <div class="error-container">
       <div class="error">
-        <p style="display: none">You have entered the wrong email or password.</p>
+        <p id="invalidLogin" style="display: none">You have entered the wrong email or password.</p>
         <p *ngIf="!uName.valid && uName.dirty" >Please use a valid email address! (e.g. something@domain)</p>
         <p *ngIf="!password.valid && password.dirty" >Your password is too short! 
-          minimum of 3 characters.
+          Minimum of 6 characters.
         </p>
       </div>
   </div>
       </form>
-      <p class="signup">Don't have an account? <span class="register-link">Join for free now!</span></p>
+      <p class="signup">Don't have an account? <a routerLink="/register" class="register-link">Join for free now!</a></p>
     </div>
 </div>

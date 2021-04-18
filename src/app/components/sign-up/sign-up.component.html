@@ -19,31 +19,37 @@
             </div>
             <div>
                 <label class="label-email">
-             <input ngModel name="email" type="text" name="email" #email="ngModel" placeholder="Enter your email" [pattern]="emailPattern" required>
+             <input autocomplete="off" ngModel name="email" type="text" name="email" #email="ngModel" placeholder="Enter your email" [pattern]="emailPattern" required>
              <span class="required">Email address</span>
              </label>
             </div>
-            <div class="error">
-                <p *ngIf="!email.valid && email.dirty">Please use a valid email address! (e.g. something@domain)</p>
-            </div>
             <div class="passwordGroup">
                 <label class="label-password">
-                    <input ngModel name="password" #password="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password" required>
+                    <input [type]="hide ? 'password': 'text'" ngModel name="password" #password="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password" required>
              <span class="required">Password</span>
+             <i id="shwpw" class="fa" (click)="hide=!hide" aria-hidden="true" [ngClass]="{
+                'fa-eye': !hide,
+                'fa-eye-slash': hide
+              }"></i>
              </label>
-                <label class="label-password">
+                <label class="label-password-confirm">
                     <input style="margin-left:8px;" ngModel name="password2" #password2="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password2" required>
              <span class="required" style="margin-left:8px;">Confirm password</span>
-             </label>
+                
+            </label>
             </div>
-            <div class="error">
-                <p *ngIf="password.hasError('minlength')">Your password is too short.</p>
-                <p *ngIf="password.value !== password2.value && password2.dirty">Your passwords do not match.</p>
-            </div>
+          
             <div class="buttonGroup">
                 <input type="submit" [disabled]="!UserRegistrationForm.valid" value="Sign up" />&nbsp;
                 <a href="/"><button type="button" class="back">Back</button></a>
             </div>
+            <div class="error-container">
+            <div class="error">
+                <p *ngIf="!email.valid && email.dirty">Please use a valid email address! (e.g. something@domain)</p>
+                <p *ngIf="password.hasError('minlength')">Your password is too short.</p>
+                <p *ngIf="password.value !== password2.value && password2.dirty">Your passwords do not match.</p>
+            </div>
+        </div>
         </form>
     </div>
     <div class="img-signup">

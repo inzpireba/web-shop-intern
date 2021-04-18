@@ -1,3 +1,4 @@
+@import '~font-awesome/css/font-awesome.css';
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -23,7 +24,10 @@
 }
 
 
-
+#shwpw{
+    margin-left: 90%;
+    transform: translateY(60px);
+}
 
 .container {
     width: 50%;
@@ -31,6 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 form {
@@ -38,7 +43,7 @@ form {
     display: flex;
     flex-direction: column;
     background: #fff;
-    padding: 60px;
+    padding: 110px;
 
 
 }
@@ -65,6 +70,9 @@ form .lastName a {
 label {
     display: flex;
     flex-direction: column;
+}
+.label-password-confirm{
+    margin-top: 13.5px;
 }
 
 label>span {
@@ -195,10 +203,16 @@ h2 {
     padding-top: 20px;
 }
 
+.error-container {
+    position: absolute;
+    margin-top: 400px;
+}
+
 
 
 .error p {
     color: #C33131;
     font-weight: bold;
     font-size: 15px;
+    text-align: left;
 }
