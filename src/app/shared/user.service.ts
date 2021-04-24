@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {User} from './user.model';
+import {User} from '../models/user.model';
 import {HttpClient} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import {Product} from '../models/products.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,14 +13,15 @@ export class UserService {
    
   }
   readonly URL = 'http://localhost:50467/api/User';
-  readonly LoginURL = 'http://localhost:50467/api/User/Login'
+  readonly LoginURL = 'http://localhost:50467/api/User/Login';
+  readonly productURL = 'http://localhost:50467/api/Products';
   user: User;
   addUser(user: User){
     this.http.post(this.URL, user).subscribe(
       res => {
         this.toastr.success("Registration successful.");
         setTimeout(() => {
-          this.router.navigateByUrl('/')
+          this.router.navigateByUrl('login')
         }, 2000);
       },
       err => {
@@ -43,5 +45,8 @@ export class UserService {
         }
       }
     )
+  }
+  getProducts(){
+    return this.http.get(this.productURL);
   }
 }

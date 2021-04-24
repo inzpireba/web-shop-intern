@@ -106,7 +106,6 @@ i {
 .products-section-container {
     width: 100%;
     height: auto;
-    background: red;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -116,10 +115,32 @@ i {
 .product-container {
     width: 400px;
     height: 300px;
-    background-color: blue;
     margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.product-image{
+    height: 90%;
+    width: 100%;
 }
 
+.product-image img{
+    height: 90%;
+    width: 100%;
+}
+
+.product-info{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-price{
+    font-weight: bold;
+}
 
 
 
