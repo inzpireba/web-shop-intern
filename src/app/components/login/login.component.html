@@ -15,7 +15,7 @@
           <label for="psw"><strong>Password</strong></label>
           <input 
           ngModel name="password" #password="ngModel" minlength="6"
-          type="password" placeholder="Enter your password" name="psw" required [type]="hide ? 'password': 'text'">
+          type="password" placeholder="Enter your password" required [type]="hide ? 'password': 'text'">
           <i id="shwpw" class="fa" (click)="hide=!hide" aria-hidden="true" [ngClass]="{
             'fa-eye': !hide,
             'fa-eye-slash': hide
