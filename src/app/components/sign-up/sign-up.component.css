@@ -1,0 +1,218 @@
+@import '~font-awesome/css/font-awesome.css';
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-reg-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-signup{
+    width: 50%;
+    height: 100%;
+    background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+#shwpw{
+    margin-left: 90%;
+    transform: translateY(60px);
+}
+
+.container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    border: 3px solid #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 110px;
+
+
+}
+
+form .firstName,
+form .firstName a,
+form .email,
+form .email a,
+form .password,
+form .password a,
+form .lastName,
+form .lastName a {
+    color: #000;
+    font-size: 16px;
+    order: 4;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.25rem;
+    outline: 1px dashed transparent;
+    outline-offset: 2px;
+
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+.label-password-confirm{
+    margin-top: 13.5px;
+}
+
+label>span {
+    color: #565e6e;
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 0.625rem;
+    order: 1;
+    transition: all 0.25s;
+}
+
+label>span.required::after {
+    content: "*";
+    font-weight: bold;
+    color: #dd6666;
+    margin-left: 0.125rem;
+}
+
+label input {
+    order: 2;
+    outline: none;
+}
+
+label input::placeholder {
+    color: #909090;
+}
+
+input[type="checkbox"]+div label:hover span::before,
+label:hover input.text {
+    border-color: rgb(92, 92, 92);
+}
+
+label input.text:focus,
+label input.text:active {
+    border-color: rgb(92, 92, 92);
+    box-shadow: 0 1px rgb(92, 92, 92);
+}
+
+input.text:focus+span,
+input.text:active+span {
+    color: #000;
+}
+
+input {
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 2.25rem;
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+    order: 2;
+    padding: 0.25rem 0.5rem;
+    width: 15rem;
+    transition: all 0.25s;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background: #000;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0.625rem;
+    order: 4;
+    outline: 1px dashed transparent;
+    outline-offset: 2px;
+    padding-left: 0;
+    text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+    background: #535d6f;
+}
+
+input[type="submit"]:active {
+    background: #000;
+    transition: all 0.125s;
+}
+
+input[type="submit"]:disabled {
+    background: #808080;
+    transition: all 0.125s;
+}
+
+input.ng-invalid.ng-dirty {
+    border-color: #C33131;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: -5px;
+}
+
+h2 {
+    font-weight: lighter;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.nameGroup {
+    display: flex;
+}
+
+.passwordGroup {
+    display: flex;
+}
+
+.back {
+    color: #fff;
+    background: #000;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0.625rem;
+    padding-left: 0;
+    text-transform: uppercase;
+    height: 2.25rem;
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    width: 15rem;
+    transition: all 0.25s;
+    border: none;
+}
+
+.buttonGroup {
+    padding-top: 20px;
+}
+
+.error-container {
+    position: absolute;
+    margin-top: 400px;
+}
+
+
+
+.error p {
+    color: #C33131;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+}

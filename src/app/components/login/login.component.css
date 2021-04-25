@@ -1,0 +1,122 @@
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-container{
+    width: 50%;
+    height: 100%;
+    background-image: url('https://i.gyazo.com/609d5f8f532bfc0eb7c838c974407c96.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#shwpw{
+    margin-left: 90%;
+    transform: translateY(-44px);
+}
+
+.form-container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.signup{
+    position: absolute;
+    top: 95%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+}
+
+.line{
+    border: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+form {
+    padding: 60px 20px;
+    border: 4px solid #f1f1f1;
+    }
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 16px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid  rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    }
+    button {
+    background-color: black;
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: none;
+    cursor: grabbing;
+    width: 100%;
+    }
+    .login-label {
+    margin-left: 7%;
+    font-size: 50px;
+    font-weight: 900;
+    color: #1A202C;
+    font-family: 'Roboto', sans-serif;
+    }
+    .remember-label{
+        font-size: 15px;
+        font-weight: 300;
+        font-family: 'Roboto', sans-serif;
+    }
+    label{
+   
+        font-size: 25px;
+        font-weight: 900;
+        color: #4A5568;
+        font-family: 'Roboto', sans-serif;  
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    .formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+    }
+
+    .container {
+    padding: 16px 0;
+    text-align:left;
+    }
+    .psw-link{
+        color: #2C5282;
+    }
+    span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+    }
+    .register-link{
+        color: #2C5282;
+    }
+
+    .error-container {
+        margin-left: 50px;
+        margin-top: -15px;
+        position: absolute;
+    }
+    .error p {
+        color: #C33131;
+        font-weight: bold;
+        font-size: 15px;
+    } 
+    .disabled-button {
+        background-color: #D3D3D3;
+        cursor: auto;
+    }
+    .disabled-button:focus {
+        border: none;
+        outline: none;
+    }

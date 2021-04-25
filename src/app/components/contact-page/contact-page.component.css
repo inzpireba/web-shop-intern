@@ -1,0 +1,259 @@
+.navbar-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    background-color: #E8E8E8;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 110%;
+}
+
+.navbar-left {
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar-right {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-p:first-child {
+    margin: 30px;
+}
+
+#phone {
+    margin: 30px;
+}
+
+i {
+    font-size: 150%;
+    margin: 5px;
+}
+
+.hero-container {
+    width: 100%;
+    height: 70vh;
+    background-image: url("https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1061&q=80");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    font-family: "Rubik";
+}
+
+.hero-inside {
+    width: auto;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.hero-inside>* {
+    margin-left: 70px;
+}
+
+.hero-heading-container {
+    height: auto;
+}
+
+.hero-heading {
+    font-size: 450%;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.hero-buttons-container {
+    margin: 10px;
+}
+
+.hero-buttons {
+    color: black;
+    background-color: white;
+    margin: 20px 5px;
+    font-weight: bold;
+    padding: 5px 40px;
+    box-shadow: -1px 2px 11px 2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 2px 11px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 2px 11px 2px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+}
+
+.hero-description {
+    margin: 10px;
+}
+
+.filters-container {
+    width: 100%;
+    background: #E8E8E8;
+    height: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+}
+
+.filter-p {
+    margin: 30px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    background: #E8E8E8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+}
+
+.social {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+}
+
+.social [class*="fa fa-"] {
+    background-color: #000;
+    border-radius: 30px;
+    color: #fff;
+    display: inline-block;
+    height: 60px;
+    line-height: 30px;
+    margin-left: 6px;
+    margin-top: 22px;
+    margin-bottom: -30px;
+    width: 60px;
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+}
+
+.contactus {
+    margin: 20px;
+}
+
+.footer-left {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 3px;
+}
+
+.footer-middle p {
+    margin: 0px 3px;
+    font-weight: bold;
+}
+
+.footer-right {
+    margin: 10px;
+}
+
+.footer-right p {
+    margin: 5px;
+}
+
+.contact-title-bar {
+    background: #f9f9f9;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-title {
+    font-weight: bold;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+.contact-subtitle {
+    color: #656565;
+    font-size: 21px;
+    margin-top: 18px;
+    border-top: 2px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.contact-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.contact-description {
+    width: 60%;
+    height: 80%;
+    padding: 60px;
+    padding-top: 30px;
+}
+
+form {
+    padding: 20px 20px;
+    border: 4px solid #f1f1f1;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 16px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type=textarea] {
+    width: 100%;
+    padding: 16px 16px 120px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 14px 0;
+    border: none;
+    cursor: grabbing;
+    width: 30%;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
