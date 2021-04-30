@@ -9,13 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
+import { OneProductComponent } from './components/one-product/one-product.component';
+import { ContactPageComponent } from './components/contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    OneProductComponent,
+    ContactPageComponent
   ],
   imports: [
     FormsModule,
