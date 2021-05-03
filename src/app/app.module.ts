@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OneProductComponent } from './components/one-product/one-product.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { NgxPaginationModule } from 'ngx-pagination'; 
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SignUpComponent,
     HomeComponent,
     OneProductComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    ShoppingCartComponent
   ],
   imports: [
     FormsModule,

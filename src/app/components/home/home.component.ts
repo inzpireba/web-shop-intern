@@ -84,10 +84,12 @@ export class HomeComponent implements OnInit {
   }
 
   sort(val: string){
+    
     this.p = 1;
     this.key = val;
     this.name = "";
     this.ngOnInit();
+
     if(this.key=="all") {
       this.ngOnInit();   
       this.noResult = false;

@@ -41,6 +41,13 @@
     <div class="product-title-bar">
         <div class="product-name">White Skirt - Star Pattern</div>
         <div class="product-category">Category: Women, Bottoms</div>
+        <div class="product-review">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span *ngIf="!reviewClicked" (click)="reviewClicked = !reviewClicked" id="write_review">Write a review</span> </div>
     </div>
     <div class="product-image-description-container">
         <div class="product-image"><img src="https://i.imgur.com/iSnhcgA.png"></div>
@@ -64,10 +71,53 @@
                 <button class="buy-buttons">ADD TO CART</button>
                 <!--not functional until the 3rd sprint (?)-->
             </div>
+            <div class="back-button"><a routerLink="/">BACK</a></div>
         </div>
-
     </div>
-
+ 
+    <div *ngIf="!reviewClicked" class="review-section">
+        <h1 class="review-heading"> {{ reviewNumber }} reviews for White Skirt - Star Pattern </h1>
+        <div *ngFor="let review of reviews" class="review_comments">
+                <div class="review_comments_img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+                </div>
+                <div class="review_comments_main">
+                    <div class="review_comments_main_top">
+                            <div>
+                                <h1 style="margin: 5px;">Username, Date</h1>
+                            </div>
+                            <div>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star"></span>
+                                 <span class="fa fa-star"></span>
+                                 <span class="fa fa-star"></span>
+                                 <span class="fa fa-star"></span>
+                            </div>
+                            
+                    </div>
+                    <div class="review_comments_main_bottom">
+                            <p> {{ review.review }} </p>
+                    </div>
+                </div>
+        </div>
+        <h1>Add your own review for this item</h1>
+        <h1>Logged in as user123 <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
+        <textarea [(ngModel)]="reviewText"
+        placeholder="Your review..." name="reviewText" id="review_input" cols="30" rows="10"></textarea>
+       <div class="star-rating">
+           <div class="star-heading">
+              <h1>Your rating ... </h1>
+           </div>
+           <div class="stars"> 
+                <span (click)="addRating(1)" class="fa fa-star rated"></span>
+                <span (click)="addRating(2)" class="fa fa-star rated"></span>
+                <span (click)="addRating(3)" class="fa fa-star rated"></span>
+                <span (click)="addRating(4)" class="fa fa-star rated"></span>
+                <span (click)="addRating(5)" class="fa fa-star rated"></span>
+           </div>
+       </div>
+       <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
+    </div>
 
 </div>
 

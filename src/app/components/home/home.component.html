@@ -59,7 +59,7 @@
 
 <div class="products-section-container">
     <div class="product-container" 
-    *ngFor="let product of produkti | paginate: {itemsPerPage:2,currentPage:p};">
+    *ngFor="let product of produkti | paginate: {itemsPerPage:1,currentPage:p};">
         <div class="product-image">
             <img src="{{product.url}}" alt="">
         </div>
