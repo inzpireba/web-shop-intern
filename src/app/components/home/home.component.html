@@ -26,16 +26,18 @@
 
 <div class="filters-container">
     <div class="filters">
-        <p class="filter-p">Men</p>
-        <p class="filter-p">Women</p>
-        <p class="filter-p">Tops</p>
-        <p class="filter-p">Bottoms</p>
-        <p class="filter-p">Accessories</p>
-        <p class="filter-p">New</p>
-        <p class="filter-p">Sale</p>
+        <p (click)="sort('men')" class="filter-p">Men</p>
+        <p (click)="sort('women')" class="filter-p">Women</p>
+        <p (click)="sort('tops')" class="filter-p">Tops</p>
+        <p (click)="sort('bottoms')" class="filter-p">Bottoms</p>
+        <p (click)="sort('accessories')" class="filter-p">Accessories</p>
+        <p (click)="sort('all')" class="filter-p">All</p>
+        <p (click)="sort('sale')" class="filter-p">Sale</p>
     </div>
 </div>
 
+
+<!-- 
 <div class="products-section-container">
     <div class="product-container" *ngFor="let product of products">
         <div class="product-image">
@@ -48,6 +50,32 @@
     </div>
 </div>
 
+-->
+
+<div class="search-container">
+    <input class="form-control" type="text" placeholder="Search by product name" 
+    name="name" [(ngModel)]="name" (ngModelChange)="Search()">    
+</div>
+
+<div class="products-section-container">
+    <div class="product-container" 
+    *ngFor="let product of produkti | paginate: {itemsPerPage:2,currentPage:p};">
+        <div class="product-image">
+            <img src="{{product.url}}" alt="">
+        </div>
+        <div class="product-info">
+            <p>{{product.name}}</p>
+            <p class="product-price">${{product.price}}</p>
+        </div>
+    </div>
+    <div *ngIf="noResult" class="product-container">
+        <p>Nema rezultata!</p>
+    </div>
+</div>
+
+<div class="pagination-container">
+    <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+</div>
 
 <div class="footer">
     <div class="footer-left">

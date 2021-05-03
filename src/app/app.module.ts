@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
 import { OneProductComponent } from './components/one-product/one-product.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
