@@ -34,12 +34,11 @@
 
 
         <div class="contact-description">
-            <form #ContactForm="ngForm">
-                <input type="text" placeholder="Your email..." />
-                <input type="text" placeholder="Your name..." />
-                <input type="textarea" placeholder="Your message..." />
-                <button type="submit">Submit</button>
-
+            <form  class="contact-form" (submit)="sendEmail($event)">
+                <input type="text" name="from_email" placeholder="Your email..." />
+                <input type="text" name="from_name" placeholder="Your name..." />
+                <input name="message" type="textarea" placeholder="Your message..."/>
+                <button type="submit" value="Send">Send</button>
             </form>
             <div class="social">
                 <a class="fa fa-facebook" title="" target="_blank" href="#"></a>

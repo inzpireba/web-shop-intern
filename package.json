@@ -23,6 +23,7 @@
     "@angular/router": "~11.2.7",
     "@rxweb/reactive-form-validators": "^2.1.2",
     "angular-font-awesome": "^3.1.2",
+    "emailjs-com": "^2.6.4",
     "font-awesome": "^4.7.0",
     "ng2-order-pipe": "^0.1.5",
     "ng2-search-filter": "^0.5.1",
