@@ -18,11 +18,24 @@ export class OneProductComponent{
   reviewNumber: number = 0;
   reviews: Review[] = [];
   reviewText: String = "";
-  reviewStarsSelected: Number = 0;
+  reviewStarsSelected: number = 0;
   oneReview = <Review>{};
 
-  addRating(passedRating: Number){
-    this.reviewStarsSelected = passedRating;
+  stars:any = document.getElementsByClassName("rated");
+  starChosen: Boolean = false;
+  addingStars: any;
+  loopuntil: any;
+
+  addRating(passedRating: number){
+    if(this.starChosen) {
+
+    } else {
+      this.reviewStarsSelected = passedRating;
+    for(let i=0;i<passedRating;i++){
+      this.stars[i].classList.toggle("checked");
+    }
+  }
+    this.starChosen = true;
   }
 
   pushReview(){
@@ -34,11 +47,23 @@ export class OneProductComponent{
       stars: this.reviewStarsSelected
     }
     this.reviews.push(this.oneReview);
-  /*  alert("Review successfully added.");  */
     this.reviewNumber = this.reviewNumber + 1;
     this.reviewText = "";
-    this.reviewStarsSelected = 0;
+
+    setTimeout(() =>{
+      this.addingStars = document.getElementsByClassName("newReviewStars");
+      this.loopuntil = this.reviewStarsSelected+(this.reviewNumber-1)*5;
+      for(let i=0+(this.reviewNumber-1)*5;i<this.loopuntil;i++){
+        this.addingStars[i].classList.toggle("checked");
+      }
+      for(let i=0;i<5;i++){
+        this.stars[i].classList.remove("checked");
+      }
+      this.starChosen= false;
+      this.reviewStarsSelected = 0;
+      this.addingStars = [];
+    },100)
   }
 }
-
+  
 }

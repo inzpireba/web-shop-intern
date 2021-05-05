@@ -1,7 +1,8 @@
 <div class="navbar-container">
     <div class="navbar-left">
-        <p class="navbar-p"> <i class="fa fa-envelope" aria-hidden="true"></i> info@webstore.ba</p>
+        <p id="info" class="navbar-p"> <i class="fa fa-envelope" aria-hidden="true"></i> info@webstore.ba</p>
         <p id="phone" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> +387 61 123 123</p>
+        <p id="contact_us" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> Contact us </p>
     </div>
     <div class="navbar-right">
         <p class="navbar-p"> <i class="fa fa-truck" aria-hidden="true"></i> Free shipping worldwide</p>
@@ -26,13 +27,13 @@
 
 <div class="filters-container">
     <div class="filters">
-        <p (click)="sort('men')" class="filter-p">Men</p>
-        <p (click)="sort('women')" class="filter-p">Women</p>
-        <p (click)="sort('tops')" class="filter-p">Tops</p>
-        <p (click)="sort('bottoms')" class="filter-p">Bottoms</p>
-        <p (click)="sort('accessories')" class="filter-p">Accessories</p>
-        <p (click)="sort('all')" class="filter-p">All</p>
-        <p (click)="sort('sale')" class="filter-p">Sale</p>
+        <p data-filter="men" (click)="sort('men')" class="filter-p">Men</p>
+        <p data-filter="women" (click)="sort('women')" class="filter-p">Women</p>
+        <p data-filter="tops" (click)="sort('tops')" class="filter-p">Tops</p>
+        <p data-filter="bottoms" (click)="sort('bottoms')" class="filter-p">Bottoms</p>
+        <p data-filter="accessories" (click)="sort('accessories')" class="filter-p">Accessories</p>
+        <p data-filter="all" (click)="sort('all')" class="filter-p">All</p>
+        <p data-filter="sale" (click)="sort('sale')" class="filter-p">Sale</p>
     </div>
 </div>
 

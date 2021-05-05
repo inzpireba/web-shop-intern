@@ -82,8 +82,18 @@ export class HomeComponent implements OnInit {
     )
     this.checkResults(); 
   }
+  
+  filteri: any;
 
   sort(val: string){
+    
+    this.filteri = document.getElementsByClassName("filter-p");
+    for(let i=0;i<this.filteri.length;i++){
+      this.filteri[i].classList.remove("bolded");
+      if(this.filteri[i].dataset.filter==val) {
+        this.filteri[i].classList.toggle("bolded");
+      }
+    }
     
     this.p = 1;
     this.key = val;

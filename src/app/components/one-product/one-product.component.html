@@ -71,11 +71,11 @@
                 <button class="buy-buttons">ADD TO CART</button>
                 <!--not functional until the 3rd sprint (?)-->
             </div>
-            <div class="back-button"><a routerLink="/">BACK</a></div>
+            <div *ngIf="!reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
         </div>
     </div>
  
-    <div *ngIf="!reviewClicked" class="review-section">
+    <div *ngIf="reviewClicked" class="review-section">
         <h1 class="review-heading"> {{ reviewNumber }} reviews for White Skirt - Star Pattern </h1>
         <div *ngFor="let review of reviews" class="review_comments">
                 <div class="review_comments_img">
@@ -87,11 +87,7 @@
                                 <h1 style="margin: 5px;">Username, Date</h1>
                             </div>
                             <div>
-                                 <span class="fa fa-star checked"></span>
-                                 <span class="fa fa-star"></span>
-                                 <span class="fa fa-star"></span>
-                                 <span class="fa fa-star"></span>
-                                 <span class="fa fa-star"></span>
+                                 <span *ngFor="let star of stars" class="fa newReviewStars fa-star"></span>
                             </div>
                             
                     </div>
@@ -117,6 +113,8 @@
            </div>
        </div>
        <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
+       
+       <div *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
     </div>
 
 </div>
