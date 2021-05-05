@@ -218,10 +218,13 @@ i {
 .product-image {
     width: 50%;
     height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-image img {
-    width: 100%;
+    width: 500px;
 }
 
 .product-category {
@@ -328,6 +331,7 @@ i {
     margin-top: 100px;
     margin-left: 9px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .back-button a {

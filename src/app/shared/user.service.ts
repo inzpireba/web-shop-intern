@@ -36,6 +36,9 @@ export class UserService {
       (res: any) => {
         localStorage.setItem('token', res.token);
         this.toastr.success("Login successful.");
+        setTimeout(() => {
+          this.router.navigateByUrl('')
+        }, 2000);
       },
       err => {
         if(err.status == 400){
@@ -48,5 +51,17 @@ export class UserService {
   }
   getProducts(){
     return this.http.get(this.productURL);
+  }
+  single: any;
+  getProductById(id: number){
+    return this.http.get(`${this.productURL}/${id}`).subscribe(
+      data=> {
+        this.single = data;
+        this.router.navigateByUrl('product');
+      }
+    );
+  }
+  populateProduct(){
+    return this.single;
   }
 }
