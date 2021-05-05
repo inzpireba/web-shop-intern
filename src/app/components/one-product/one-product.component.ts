@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/user.service';
 
 interface Review{
   review: String,
@@ -12,8 +13,12 @@ interface Review{
 })
 export class OneProductComponent{
 
-  constructor() { }
-
+  constructor(private service: UserService) { }
+  single: any;
+  ngOnInit() : void{
+    this.single = this.service.populateProduct();
+    console.log(this.single);
+  }
   reviewClicked: Boolean = false;
   reviewNumber: number = 0;
   reviews: Review[] = [];

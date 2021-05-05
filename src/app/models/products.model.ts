@@ -3,6 +3,6 @@ export class Product {
     price: number = 0;
     size: string = '';
     imgUrl: string = '';
-    review: number = 0;
-    categoryId: number = 0;
+    description: string = '';
+    category: string = '';
 }

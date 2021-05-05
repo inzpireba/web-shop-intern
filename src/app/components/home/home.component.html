@@ -11,11 +11,11 @@
     <div class="hero-inside">
         <div class="hero-heading-container">
             <h1 class="hero-heading">Inzpire webshop</h1>
-            <h1 class="hero-user">Welcome back, username! </h1>
+            <h1 class="hero-user">Welcome! </h1>
         </div>
         <div class="hero-buttons-container">
-            <a href="" class="hero-buttons">Register</a>
-            <a href="" class="hero-buttons">Login</a>
+            <a routerLink='register' class="hero-buttons">Register</a>
+            <a routerLink='login' class="hero-buttons">Login</a>
         </div>
         <div class="hero-description-container">
             <p class="hero-description"><i class="fa fa-cogs" aria-hidden="true"></i>
@@ -26,13 +26,13 @@
 
 <div class="filters-container">
     <div class="filters">
-        <p (click)="sort('men')" class="filter-p">Men</p>
-        <p (click)="sort('women')" class="filter-p">Women</p>
-        <p (click)="sort('tops')" class="filter-p">Tops</p>
-        <p (click)="sort('bottoms')" class="filter-p">Bottoms</p>
-        <p (click)="sort('accessories')" class="filter-p">Accessories</p>
-        <p (click)="sort('all')" class="filter-p">All</p>
-        <p (click)="sort('sale')" class="filter-p">Sale</p>
+        <p data-filter="jackets" (click)="sort('jackets')" class="filter-p">Jackets</p>
+        <p data-filter="skirts" (click)="sort('skirts')" class="filter-p">Skirts</p>
+        <p data-filter="tops" (click)="sort('tops')" class="filter-p">Tops</p>
+        <p data-filter="bottoms" (click)="sort('bottoms')" class="filter-p">Bottoms</p>
+        <p data-filter="shirts" (click)="sort('shirts')" class="filter-p">shirts</p>
+        <p data-filter="all" (click)="sort('all')" class="filter-p">All</p>
+        <p data-filter="sale" (click)="sort('sale')" class="filter-p">Sale</p>
     </div>
 </div>
 
@@ -53,15 +53,15 @@
 -->
 
 <div class="search-container">
-    <input class="form-control" type="text" placeholder="Search by product name" 
+    <input autocomplete="off" class="form-control" type="text" placeholder="Search by product name" 
     name="name" [(ngModel)]="name" (ngModelChange)="Search()">    
 </div>
 
 <div class="products-section-container">
     <div class="product-container" 
-    *ngFor="let product of produkti | paginate: {itemsPerPage:1,currentPage:p};">
+    *ngFor="let product of produkti | paginate: {itemsPerPage:6,currentPage:p};">
         <div class="product-image">
-            <img src="{{product.url}}" alt="">
+           <a (click)="openProduct(product)"><img src="{{product.imgUrl}}" alt=""></a> 
         </div>
         <div class="product-info">
             <p>{{product.name}}</p>

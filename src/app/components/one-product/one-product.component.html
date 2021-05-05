@@ -39,8 +39,8 @@
 
 <div class="product-container">
     <div class="product-title-bar">
-        <div class="product-name">White Skirt - Star Pattern</div>
-        <div class="product-category">Category: Women, Bottoms</div>
+        <div class="product-name">{{single.name}}</div>
+        <div class="product-category">Category: {{single.category}}</div>
         <div class="product-review">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
@@ -50,7 +50,7 @@
             <span *ngIf="!reviewClicked" (click)="reviewClicked = !reviewClicked" id="write_review">Write a review</span> </div>
     </div>
     <div class="product-image-description-container">
-        <div class="product-image"><img src="https://i.imgur.com/iSnhcgA.png"></div>
+        <div class="product-image"><img src="{{single.imgUrl}}"></div>
 
         <div class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu commodo felis. Vestibulum et ex elit. Vivamus blandit quam id lectus feugiat tincidunt. Phasellus dolor nunc, consectetur accumsan iaculis sit amet, ullamcorper in lacus.
             Vivamus eget lectus malesuada, luctus lorem a, rhoncus enim. Ut nec fermentum neque, iaculis lacinia mi. In maximus rhoncus mi nec hendrerit. Nullam nec leo condimentum, laoreet risus finibus, dignissim est. Aenean vitae vulputate augue, ut
@@ -62,7 +62,7 @@
                 <button class="sizes">L</button>
                 <button class="sizes">XL</button>
             </div>
-            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; $49.99</div>
+            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; ${{single.price}}</div>
             <div class="discount"><span style="
                 background: #FF5367;padding:9px;">20% off for new users!</span></div>
 
@@ -71,12 +71,12 @@
                 <button class="buy-buttons">ADD TO CART</button>
                 <!--not functional until the 3rd sprint (?)-->
             </div>
-            <div class="back-button"><a routerLink="/">BACK</a></div>
+            <div routerLink="/" class="back-button">BACK</div>
         </div>
     </div>
  
     <div *ngIf="!reviewClicked" class="review-section">
-        <h1 class="review-heading"> {{ reviewNumber }} reviews for White Skirt - Star Pattern </h1>
+        <h1 class="review-heading"> {{ reviewNumber }} reviews for {{single.name}} </h1>
         <div *ngFor="let review of reviews" class="review_comments">
                 <div class="review_comments_img">
                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
