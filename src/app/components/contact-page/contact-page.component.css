@@ -251,14 +251,43 @@ button {
     color: white;
     padding: 14px 0;
     border: none;
-    cursor: grabbing;
+    cursor: pointer;
     width: 30%;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-
+.errors-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    color: crimson;
+    font-weight: bold;
+}
+.success_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgb(50, 124, 50);;
+}
+.closed {
+    display: none;
+}
+.success {
+    margin: 10px;
+    color: rgb(50, 124, 50);
+}
+.success_close {
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+}
 #contact_us{
     display: none;
 }

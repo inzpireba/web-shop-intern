@@ -34,12 +34,28 @@
 
 
         <div class="contact-description">
-            <form  class="contact-form" (submit)="sendEmail($event)">
-                <input type="text" name="from_email" placeholder="Your email..." />
-                <input type="text" name="from_name" placeholder="Your name..." />
-                <input name="message" type="textarea" placeholder="Your message..."/>
+            <form #f="ngForm" class="contact-form" (submit)="sendEmail($event)">
+                <input id="email"
+                type="text" name="from_email" placeholder="Your email..." 
+                ngModel #from_email="ngModel"/>
+                <input id="name" 
+                type="text" name="from_name" placeholder="Your name..." 
+                ngModel #from_name="ngModel"/>
+                <input id="message"
+                name="message" type="textarea" placeholder="Your message..."
+                ngModel #message="ngModel"/>
                 <button type="submit" value="Send">Send</button>
             </form>
+            <div class="errors-container">
+                <p *ngIf="!emailCorrect" class="error">You have entered invalid email.</p>
+                <p *ngIf="!nameCorrect" class="error">Name can't be empty!</p>
+                <p *ngIf="!messageCorrect" class="error">You should type a message!</p>
+                <p *ngIf="alreadySent2" class="error">You have already sent an email!</p>
+                <div *ngIf="validationCompleted" class="success_container">
+                <p  class="success">You have successfully sent an email.</p>
+                <p (click)="close()" class="success_close" href="#">✖</p>
+                </div>
+            </div>
             <div class="social">
                 <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
                 <a class="fa fa-instagram" title="" target="_blank" href="#"></a>
