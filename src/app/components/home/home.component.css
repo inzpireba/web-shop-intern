@@ -247,6 +247,32 @@ i {
     display: none;
 }
 
+/*STICKERS*/
+
+.soldout-container{
+    position: absolute;
+}
+
+.new-sticker-container{
+    position: absolute;
+}
+.new-sticker{
+    width: 70px;
+    position: absolute;
+    top: -170px;
+    right: 90px;
+}
+
+.soldout-sticker{
+    width: 120px;
+    position: absolute;
+    top: -170px;
+}
+
+
+
+
+
 /* Responsive - mobile friendly */
 
   @media only screen and (max-width: 1000px) {

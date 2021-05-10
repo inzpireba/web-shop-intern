@@ -8,6 +8,8 @@ interface Product {
   category: string;
   description: string;
   size: string;
+  quantity: number;
+  dateAdded: Date;
 }
 
 @Component({
@@ -111,16 +113,17 @@ openProduct(product:any){
   this.service.getProductById(this.id)
 }
 
-
-pen: Product = {
-  imgUrl: "https://s3-us-west-2.amazonaws.com/melingoimages/Images/70572.jpg",
-  name: "Pen",
-  price: 1.43,
-  category: "accessories",
-  description: "kk",
-  size: "L"
-}
+checkDate(date: Date){
+  var productDate = new Date(date);
+  var today = new Date();
+  var difference = (today.getTime() - productDate.getTime());
+  var toSeconds = difference/1000;
+  var toDays = toSeconds/86400;
+  toDays = Math.round(toDays);
   
+  return (toDays < 7) ?  true : false; 
+}
+
 produkti: Product[] = [];
 
 }
