@@ -39,22 +39,20 @@
 
 <div class="product-container">
     <div class="product-title-bar">
-        <div class="product-name">White Skirt - Star Pattern</div>
-        <div class="product-category">Category: Women, Bottoms</div>
+        <div class="product-name">{{single.name}}</div>
+        <div class="product-category">Category: {{single.category}}</div>
         <div class="product-review">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+            <img *ngIf="averageRating==5" src="https://gyazo.com/b50e0062a8c92776c48b1f28e97a8dc7.png" alt="">
+            <img *ngIf="averageRating==4" src="https://gyazo.com/46cd360876dca96540002b9601cdf552.png" alt="">
+            <img *ngIf="averageRating==3" src="https://gyazo.com/4b3e972b8bf9cc86bbf5a4ffc3350d13.png" alt="">
+            <img *ngIf="averageRating==2" src="https://gyazo.com/8be2d23dbce0e3f0c5b42384476afc9c.png" alt="">
+            <img *ngIf="averageRating==1" src="https://gyazo.com/d012c2c270358ad929f980274d6aed0e.png" alt="">
             <span *ngIf="!reviewClicked" (click)="reviewClicked = !reviewClicked" id="write_review">Write a review</span> </div>
     </div>
     <div class="product-image-description-container">
-        <div class="product-image"><img src="https://i.imgur.com/iSnhcgA.png"></div>
+        <div class="product-image"><img src="{{single.imgUrl}}"></div>
 
-        <div class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu commodo felis. Vestibulum et ex elit. Vivamus blandit quam id lectus feugiat tincidunt. Phasellus dolor nunc, consectetur accumsan iaculis sit amet, ullamcorper in lacus.
-            Vivamus eget lectus malesuada, luctus lorem a, rhoncus enim. Ut nec fermentum neque, iaculis lacinia mi. In maximus rhoncus mi nec hendrerit. Nullam nec leo condimentum, laoreet risus finibus, dignissim est. Aenean vitae vulputate augue, ut
-            volutpat nibh. Maecenas quis iaculis sapien<br>
+        <div class="product-description">{{single.description}}<br>
             <div class="size-buttons">
                 <button class="sizes">XS</button>
                 <button class="sizes">S</button>
@@ -62,7 +60,7 @@
                 <button class="sizes">L</button>
                 <button class="sizes">XL</button>
             </div>
-            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; $49.99</div>
+            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; ${{single.price}}</div>
             <div class="discount"><span style="
                 background: #FF5367;padding:9px;">20% off for new users!</span></div>
 
@@ -74,7 +72,7 @@
             <div *ngIf="!reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
         </div>
     </div>
- 
+
     <div *ngIf="reviewClicked" class="review-section">
         <h1 class="review-heading"> {{ reviewNumber }} reviews for White Skirt - Star Pattern </h1>
         <div *ngFor="let review of reviews" class="review_comments">
@@ -84,20 +82,24 @@
                 <div class="review_comments_main">
                     <div class="review_comments_main_top">
                             <div>
-                                <h1 style="margin: 5px;">Username, Date</h1>
+                                <h1 style="margin: 5px;">{{review.user}}</h1>
                             </div>
                             <div>
-                                 <span *ngFor="let star of stars" class="fa newReviewStars fa-star"></span>
+                                <img *ngIf="review.rating==5" src="https://gyazo.com/b50e0062a8c92776c48b1f28e97a8dc7.png" alt="">
+                                <img *ngIf="review.rating==4" src="https://gyazo.com/46cd360876dca96540002b9601cdf552.png" alt="">
+                                <img *ngIf="review.rating==3" src="https://gyazo.com/4b3e972b8bf9cc86bbf5a4ffc3350d13.png" alt="">
+                                <img *ngIf="review.rating==2" src="https://gyazo.com/8be2d23dbce0e3f0c5b42384476afc9c.png" alt="">
+                                <img *ngIf="review.rating==1" src="https://gyazo.com/d012c2c270358ad929f980274d6aed0e.png" alt="">
                             </div>
                             
                     </div>
                     <div class="review_comments_main_bottom">
-                            <p> {{ review.review }} </p>
+                            <p> {{ review.comment }} </p>
                     </div>
                 </div>
         </div>
         <h1>Add your own review for this item</h1>
-        <h1>Logged in as user123 <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
+        <h1>Logged in as {{userDetails.firstname}} <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
         <textarea [(ngModel)]="reviewText"
         placeholder="Your review..." name="reviewText" id="review_input" cols="30" rows="10"></textarea>
        <div class="star-rating">

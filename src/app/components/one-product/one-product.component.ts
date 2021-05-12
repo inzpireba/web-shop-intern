@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 
 interface Review{
-  review: String,
-  stars: Number
+  comment: String,
+  rating: number,
+  user: String,
+  productId: number
 }
 
 @Component({
@@ -14,17 +16,48 @@ interface Review{
 export class OneProductComponent{
 
   constructor(private service: UserService) { }
+  averageRating: number = 0;
   single: any;
- /* ngOnInit() : void{
-    this.single = this.service.populateProduct();
-    console.log(this.single);
-  } */
+  userDetails: any;
   reviewClicked: Boolean = false;
   reviewNumber: number = 0;
   reviews: Review[] = [];
   reviewText: String = "";
+  databaseReviews: any;
   reviewStarsSelected: number = 0;
   oneReview = <Review>{};
+  ngOnInit() : void{
+    this.single = this.service.initProduct();
+    this.service.getReviews().subscribe(
+      res => {
+        this.databaseReviews = res;
+        this.reviews = [...this.databaseReviews];
+        this.reviews = this.reviews.filter(
+          res => {
+            return res.productId == this.single.productId;
+          }
+        );
+        this.reviewNumber = this.reviews.length;
+        for(let i=0; i<this.reviewNumber; i++){
+          this.averageRating+= this.reviews[i].rating;
+        }
+        this.averageRating = Math.round(this.averageRating/this.reviewNumber);
+      },
+      err => {console.log(err)}
+    );
+
+    if(localStorage.getItem('token') != null){
+      this.service.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
 
   stars:any = document.getElementsByClassName("rated");
   starChosen: Boolean = false;
@@ -32,15 +65,13 @@ export class OneProductComponent{
   loopuntil: any;
 
   addRating(passedRating: number){
-    if(this.starChosen) {
-
-    } else {
-      this.reviewStarsSelected = passedRating;
+    this.reviewStarsSelected = passedRating;
+    for(let i=0; i<5; i++){
+      this.stars[i].classList.remove("checked");
+    }
     for(let i=0;i<passedRating;i++){
       this.stars[i].classList.toggle("checked");
-    }
   }
-    this.starChosen = true;
   }
 
   pushReview(){
@@ -48,9 +79,12 @@ export class OneProductComponent{
       alert("Problem. Short text or stars not chosen.");
     } else {
     this.oneReview = {
-      review: this.reviewText,
-      stars: this.reviewStarsSelected
+      comment: this.reviewText,
+      rating: this.reviewStarsSelected,
+      user: this.userDetails.firstname,
+      productId: this.single.productId
     }
+    this.service.addReview(this.oneReview);
     this.reviews.push(this.oneReview);
     this.reviewNumber = this.reviewNumber + 1;
     this.reviewText = "";

@@ -16,7 +16,9 @@ export class UserService {
   readonly LoginURL = 'http://localhost:50467/api/User/Login';
   readonly UserProfileURL = 'http://localhost:50467/api/UserProfile';
   readonly productURL = 'http://localhost:50467/api/Products';
+  readonly reviewURL = 'http://localhost:50467/api/Reviews';
   user: User;
+  review: any;
   addUser(user: User){
     this.http.post(this.URL, user).subscribe(
       res => {
@@ -54,6 +56,7 @@ export class UserService {
     return this.http.get(this.productURL);
   }
   single: any;
+  test: any;
   getProductById(id: number){
     return this.http.get(`${this.productURL}/${id}`).subscribe(
       data=> {
@@ -62,10 +65,41 @@ export class UserService {
       }
     );
   }
+  productId: number;
   populateProduct(){
-    return this.single;
+    var object = localStorage.getItem('productID');
+    object = JSON.parse(object);
+    this.test = object;
+    this.productId = this.test.productId;
+    console.log(this.productId);
+    this.getProductById(this.productId);
+    this.http.get(`${this.productURL}/${this.productId}`).subscribe(
+      data=> {
+        this.single = data;
+        this.router.navigateByUrl('product');
+      }
+    );
   }
+
+  initProduct(){
+    this.populateProduct();
+    console.log("test" + this.single);
+    return this.single;
+    
+  }
+
   getUserProfile(){
     return this.http.get(this.UserProfileURL);
+  }
+  addReview(review: any){
+    this.http.post(this.reviewURL, review).subscribe(
+      res => {
+        this.toastr.success("added new review");
+      },
+      err => {console.log(err);}
+    );
+  }
+  getReviews(){
+    return this.http.get(this.reviewURL);
   }
 }

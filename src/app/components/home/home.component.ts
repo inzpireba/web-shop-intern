@@ -122,7 +122,11 @@ export class HomeComponent implements OnInit {
 id : number;
 openProduct(product:any){
   this.id = product.productId;
-  this.service.getProductById(this.id)
+  localStorage.setItem('productID', JSON.stringify({
+    //Insert Number(value)
+    productId: this.id
+  }));
+  this.service.populateProduct();
 }
 
 checkDate(date: Date){
