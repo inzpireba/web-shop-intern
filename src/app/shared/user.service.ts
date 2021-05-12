@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/user.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import {Product} from '../models/products.model';
@@ -14,6 +14,7 @@ export class UserService {
   }
   readonly URL = 'http://localhost:50467/api/User';
   readonly LoginURL = 'http://localhost:50467/api/User/Login';
+  readonly UserProfileURL = 'http://localhost:50467/api/UserProfile';
   readonly productURL = 'http://localhost:50467/api/Products';
   user: User;
   addUser(user: User){
@@ -63,5 +64,8 @@ export class UserService {
   }
   populateProduct(){
     return this.single;
+  }
+  getUserProfile(){
+    return this.http.get(this.UserProfileURL);
   }
 }

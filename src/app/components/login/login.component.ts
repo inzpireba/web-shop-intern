@@ -3,6 +3,7 @@ import { User } from '../../models/user.model';
 import {HttpClient} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +13,9 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class LoginComponent implements OnInit {
   hide : boolean = true;
-  constructor(public service: UserService) {
+  constructor(public service: UserService, public router: Router) {
   }
+  
   emailAuthorized: boolean = false;
   pwAuthorized: boolean = false;
   loginUser = new User();
@@ -25,6 +27,9 @@ export class LoginComponent implements OnInit {
     this.service.loginUser(this.loginUser);
   }
   ngOnInit(): void {
+    if(localStorage.getItem('token') != null){
+      this.router.navigateByUrl('');
+    }
   }
 
 }

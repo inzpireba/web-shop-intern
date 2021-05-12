@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
-
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 interface Product {
   imgUrl: string;
   name: string;
@@ -19,16 +21,15 @@ interface Product {
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private service: UserService) { }
+  constructor(private service: UserService, private router: Router, private toastr:ToastrService) { }
   products: any;
   inputVal: string;
   name: any;
   key: any = "";
   p: number;
   noResult: boolean = false;
-
+  userDetails: any;
   ngOnInit(): void {
-    
     this.produkti = [];
     
     this.service.getProducts().subscribe(
@@ -38,6 +39,17 @@ export class HomeComponent implements OnInit {
       }
     );
     //this.products.forEach(val=> this.produkti.push(Object.assign({}, val)));
+    if(localStorage.getItem('token') != null){
+      this.service.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+  
   }
 
   Search() {
@@ -120,8 +132,13 @@ checkDate(date: Date){
   var toSeconds = difference/1000;
   var toDays = toSeconds/86400;
   toDays = Math.round(toDays);
-  
   return (toDays < 7) ?  true : false; 
+}
+
+logout(){
+  localStorage.removeItem('token');
+  this.toastr.success('Logged out!')
+  this.router.navigateByUrl('login');
 }
 
 produkti: Product[] = [];
