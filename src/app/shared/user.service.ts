@@ -57,35 +57,24 @@ export class UserService {
   }
   single: any;
   test: any;
-  getProductById(id: number){
+  /*getProductById(id: number){
     return this.http.get(`${this.productURL}/${id}`).subscribe(
       data=> {
         this.single = data;
         this.router.navigateByUrl('product');
       }
     );
-  }
+  }*/
   productId: number;
-  populateProduct(){
+
+  initProduct(){
     var object = localStorage.getItem('productID');
     object = JSON.parse(object);
     this.test = object;
     this.productId = this.test.productId;
     console.log(this.productId);
-    this.getProductById(this.productId);
-    this.http.get(`${this.productURL}/${this.productId}`).subscribe(
-      data=> {
-        this.single = data;
-        this.router.navigateByUrl('product');
-      }
-    );
-  }
-
-  initProduct(){
-    this.populateProduct();
-    console.log("test" + this.single);
-    return this.single;
-    
+    //this.getProductById(this.productId);
+    return this.http.get(`${this.productURL}/${this.productId}`);
   }
 
   getUserProfile(){

@@ -1,42 +1,4 @@
-<div class="navbar-container">
-    <div class="navbar-left">
-        <p class="navbar-p"> <i class="fa fa-envelope" aria-hidden="true"></i> info@webstore.ba</p>
-        <p id="phone" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> +387 61 123 123</p>
-    </div>
-    <div class="navbar-right">
-        <p class="navbar-p"><a routerLink="/contact"><i class="fa fa-cogs" aria-hidden="true"></i> Contact page</a> </p>
-    </div>
-</div>
-<div class="hero-container">
-    <div class="hero-inside">
-        <div class="hero-heading-container">
-            <h1 class="hero-heading">Inzpire webshop</h1>
-            <h1 class="hero-user">Welcome back, username! </h1>
-        </div>
-        <div class="hero-buttons-container">
-            <a href="" class="hero-buttons">Register</a>
-            <a href="" class="hero-buttons">Login</a>
-        </div>
-        <div class="hero-description-container">
-            <p class="hero-description"><i class="fa fa-cogs" aria-hidden="true"></i> Get up to 20% off on your first purchase</p>
-        </div>
-    </div>
-</div>
-
-<div class="filters-container">
-    <div class="filters">
-        <p class="filter-p">Men</p>
-        <p class="filter-p">Women</p>
-        <p class="filter-p">Tops</p>
-        <p class="filter-p">Bottoms</p>
-        <p class="filter-p">Accessories</p>
-        <p class="filter-p">New</p>
-        <p class="filter-p">Sale</p>
-    </div>
-</div>
-
-
-
+<app-header></app-header>
 <div class="product-container">
     <div class="product-title-bar">
         <div class="product-name">{{single.name}}</div>
@@ -47,7 +9,7 @@
             <img *ngIf="averageRating==3" src="https://gyazo.com/4b3e972b8bf9cc86bbf5a4ffc3350d13.png" alt="">
             <img *ngIf="averageRating==2" src="https://gyazo.com/8be2d23dbce0e3f0c5b42384476afc9c.png" alt="">
             <img *ngIf="averageRating==1" src="https://gyazo.com/d012c2c270358ad929f980274d6aed0e.png" alt="">
-            <span *ngIf="!reviewClicked" (click)="reviewClicked = !reviewClicked" id="write_review">Write a review</span> </div>
+            <span *ngIf="!reviewClicked" (click)="populateReviews()" id="write_review">Write a review</span> </div>
     </div>
     <div class="product-image-description-container">
         <div class="product-image"><img src="{{single.imgUrl}}"></div>
@@ -65,8 +27,8 @@
                 background: #FF5367;padding:9px;">20% off for new users!</span></div>
 
             <div class="buy-qty-buttons">
-                <button class="qty-buttons">QUANTITY</button>
-                <button class="buy-buttons">ADD TO CART</button>
+                <button class="qty-buttons">QUANTITY: <span class="quantity-number">{{productQuantity}}</span></button>
+                <button (click)='pushToCart(single)' class="buy-buttons">ADD TO CART</button>
                 <!--not functional until the 3rd sprint (?)-->
             </div>
             <div *ngIf="!reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
@@ -98,6 +60,8 @@
                     </div>
                 </div>
         </div>
+        <h1 *ngIf='!userDetails'>Log in to add your own review.</h1>
+        <div *ngIf='userDetails' class="comment-container">
         <h1>Add your own review for this item</h1>
         <h1>Logged in as {{userDetails.firstname}} <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
         <textarea [(ngModel)]="reviewText"
@@ -115,6 +79,7 @@
            </div>
        </div>
        <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
+    </div>
        
        <div *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
     </div>

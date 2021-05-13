@@ -13,6 +13,7 @@ import { OneProductComponent } from './components/one-product/one-product.compon
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HomeComponent,
     OneProductComponent,
     ContactPageComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    HeaderComponent
   ],
   imports: [
     FormsModule,

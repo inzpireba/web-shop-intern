@@ -10,6 +10,10 @@
     font-size: 110%;
 }
 
+.product-empty{
+    padding: 150px;
+}
+
 .navbar-left {
     width: 60%;
     display: flex;

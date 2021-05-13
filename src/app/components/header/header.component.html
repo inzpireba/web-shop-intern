@@ -1,0 +1,57 @@
+<div class="navbar-container">
+    <div class="navbar-left">
+        <p id="info" class="navbar-p"> <i class="fa fa-envelope" aria-hidden="true"></i> info@webstore.ba</p>
+        <p id="phone" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> +387 61 123 123</p>
+        <p id="contact_us" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> Contact us </p>
+    </div>
+    <div class="navbar-right">
+        <p (click)='cartClicked = !cartClicked' class="navbar-p cart"><span class="cart-text">Your cart</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
+        <div *ngIf='cartClicked' class="cart-content">
+            <div *ngIf="cartProducts" class="cart-items-container">
+                <div class="cart-item" *ngFor="let product of cartProducts">
+                    <div class="img-container">
+                        <img src="{{product.img}}" alt="">
+                    </div>
+                    <div class="info-container">
+                        <p> <b> Product name: {{product.name}} </b> </p>    
+                        <p>Price: ${{product.price}} </p>   
+                        <p>Quantity: {{product.quantity}}</p>
+                    </div>
+                    <div class="close">
+                        <a href="">✖</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!cartProducts" class="cart-items-container">
+                <img class="empty-cart-img" src="https://i.gyazo.com/afa6a28d0ee0b5e7d55b7a5aecdfedec.png" alt="">
+            </div>
+           
+            <div class="button-checkout" *ngIf='cartProducts'>
+                <a routerLink="/cart">Order now</a>
+            </div>
+            <div class="button-checkout button-disabled" *ngIf='!cartProducts'>
+                <a>Order now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hero-container">
+    <div class="hero-inside">
+        <div class="hero-heading-container">
+            <h1 class="hero-heading">Inzpire webshop</h1>
+            <h1 *ngIf="userDetails" class="hero-user">Welcome back, {{userDetails.firstname}}</h1>
+        </div>
+        <div class="hero-buttons-container" *ngIf="userDetails">
+            <a (click)="logout()" class="hero-buttons">Log out</a>
+        </div>
+        <div class="hero-buttons-container" *ngIf="!userDetails">
+            <a routerLink='/register' class="hero-buttons">Register</a>
+            <a routerLink='/login' class="hero-buttons">Login</a>
+        </div>
+        <div class="hero-description-container">
+            <p class="hero-description"><i class="fa fa-cogs" aria-hidden="true"></i>
+            Get up to 20% off on your first purchase</p>
+        </div>
+    </div>
+</div>

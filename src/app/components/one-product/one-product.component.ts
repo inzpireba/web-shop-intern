@@ -7,6 +7,12 @@ interface Review{
   user: String,
   productId: number
 }
+interface CartItem{
+  name: String,
+  price: number,
+  quantity: number,
+  img: String
+}
 
 @Component({
   selector: 'app-one-product',
@@ -16,6 +22,7 @@ interface Review{
 export class OneProductComponent{
 
   constructor(private service: UserService) { }
+  productQuantity: number = 2;
   averageRating: number = 0;
   single: any;
   userDetails: any;
@@ -26,25 +33,15 @@ export class OneProductComponent{
   databaseReviews: any;
   reviewStarsSelected: number = 0;
   oneReview = <Review>{};
+  cartItems: CartItem[] = [];
+  cartItem: CartItem;
   ngOnInit() : void{
-    this.single = this.service.initProduct();
-    this.service.getReviews().subscribe(
-      res => {
-        this.databaseReviews = res;
-        this.reviews = [...this.databaseReviews];
-        this.reviews = this.reviews.filter(
-          res => {
-            return res.productId == this.single.productId;
-          }
-        );
-        this.reviewNumber = this.reviews.length;
-        for(let i=0; i<this.reviewNumber; i++){
-          this.averageRating+= this.reviews[i].rating;
-        }
-        this.averageRating = Math.round(this.averageRating/this.reviewNumber);
-      },
-      err => {console.log(err)}
+    this.service.initProduct().subscribe(
+      data=> {
+         this.single = data;
+      }
     );
+    
 
     if(localStorage.getItem('token') != null){
       this.service.getUserProfile().subscribe(
@@ -73,6 +70,28 @@ export class OneProductComponent{
       this.stars[i].classList.toggle("checked");
   }
   }
+
+  populateReviews(){
+    this.reviewClicked = !this.reviewClicked;
+    this.service.getReviews().subscribe(
+      res => {
+        this.databaseReviews = res;
+        this.reviews = [...this.databaseReviews];
+        this.reviews = this.reviews.filter(
+          res => {
+            return res.productId == this.single.productId;
+          }
+        );
+        this.reviewNumber = this.reviews.length;
+        for(let i=0; i<this.reviewNumber; i++){
+          this.averageRating+= this.reviews[i].rating;
+        }
+        this.averageRating = Math.round(this.averageRating/this.reviewNumber);
+      },
+      err => {console.log(err)}
+    );
+  }
+
 
   pushReview(){
     if(this.reviewText.length < 5 || this.reviewStarsSelected == 0) {
@@ -104,5 +123,17 @@ export class OneProductComponent{
     },100)
   }
 }
-  
+
+pushToCart(product: any){
+  this.cartItems = JSON.parse(localStorage.getItem("cartproducts") || "[]");
+  this.cartItem = {
+    img: product.imgUrl,
+    name: product.name,
+    price: product.price*this.productQuantity,
+    quantity: this.productQuantity
+  }
+  this.cartItems.push(this.cartItem);
+  localStorage.setItem("cartproducts", JSON.stringify(this.cartItems));
+  window.location.reload();
+} 
 }

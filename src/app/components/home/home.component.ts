@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit {
   p: number;
   noResult: boolean = false;
   userDetails: any;
+  cartClicked: boolean = false;
+  cartProducts: any;
   ngOnInit(): void {
     this.produkti = [];
     
@@ -38,18 +40,6 @@ export class HomeComponent implements OnInit {
         this.produkti = [...this.products];
       }
     );
-    //this.products.forEach(val=> this.produkti.push(Object.assign({}, val)));
-    if(localStorage.getItem('token') != null){
-      this.service.getUserProfile().subscribe(
-        res => {
-          this.userDetails = res;
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
-  
   }
 
   Search() {
@@ -123,10 +113,9 @@ id : number;
 openProduct(product:any){
   this.id = product.productId;
   localStorage.setItem('productID', JSON.stringify({
-    //Insert Number(value)
     productId: this.id
   }));
-  this.service.populateProduct();
+  this.router.navigateByUrl('product');
 }
 
 checkDate(date: Date){
@@ -137,12 +126,6 @@ checkDate(date: Date){
   var toDays = toSeconds/86400;
   toDays = Math.round(toDays);
   return (toDays < 7) ?  true : false; 
-}
-
-logout(){
-  localStorage.removeItem('token');
-  this.toastr.success('Logged out!')
-  this.router.navigateByUrl('login');
 }
 
 produkti: Product[] = [];

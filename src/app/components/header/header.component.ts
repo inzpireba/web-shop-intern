@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/shared/user.service';
+
+interface CartItem{
+  name: String,
+  price: number,
+  quantity: number,
+  img: String
+}
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
+})
+export class HeaderComponent implements OnInit {
+
+  constructor(private service: UserService, private router: Router, private toastr:ToastrService) { }
+  userDetails: any;
+  cartClicked: boolean = false;
+  cartProducts: CartItem[];
+  ngOnInit(): void {
+    if(localStorage.getItem('token') != null){
+      this.service.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+    if(localStorage.getItem('cartproducts')!= null){
+      this.cartProducts = JSON.parse(localStorage.getItem("cartproducts") || "[]");
+    }
+  }
+  
+logout(){
+  localStorage.removeItem('cartproducts');
+  localStorage.removeItem('token');
+  this.toastr.success('Logged out!');
+  this.router.navigateByUrl('login');
+}
+
+}
