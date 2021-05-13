@@ -225,9 +225,26 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.product-image img {
+.side-imgs{
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 500px;
+}
+.side-imgs img{
+    width: 100px;
+}
+
+.img-active{
+    padding: 3px;
+    border: 1px solid black;
+}
+
+.img-main img {
     width: 500px;
 }
 

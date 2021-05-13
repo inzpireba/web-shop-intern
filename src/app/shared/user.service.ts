@@ -57,23 +57,12 @@ export class UserService {
   }
   single: any;
   test: any;
-  /*getProductById(id: number){
-    return this.http.get(`${this.productURL}/${id}`).subscribe(
-      data=> {
-        this.single = data;
-        this.router.navigateByUrl('product');
-      }
-    );
-  }*/
   productId: number;
-
   initProduct(){
     var object = localStorage.getItem('productID');
     object = JSON.parse(object);
     this.test = object;
     this.productId = this.test.productId;
-    console.log(this.productId);
-    //this.getProductById(this.productId);
     return this.http.get(`${this.productURL}/${this.productId}`);
   }
 

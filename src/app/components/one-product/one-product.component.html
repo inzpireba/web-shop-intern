@@ -12,7 +12,17 @@
             <span *ngIf="!reviewClicked" (click)="populateReviews()" id="write_review">Write a review</span> </div>
     </div>
     <div class="product-image-description-container">
-        <div class="product-image"><img src="{{single.imgUrl}}"></div>
+        <div class="product-image">
+            <div class="img-main">
+                <img id="main-image" src="{{single.imgUrl}}">
+            </div>
+            <div class="side-imgs">
+                <img (click)="changeImg(single.imgUrl, 1)" [ngClass]="{'img-active': imgId==1}" src="{{single.imgUrl}}">
+                <img (click)="changeImg(single.imgUrl2, 2)" [ngClass]="{'img-active': imgId==2}" src="{{single.imgUrl2}}" alt="">
+                <img (click)="changeImg(single.imgUrl3, 3)" [ngClass]="{'img-active': imgId==3}" src="{{single.imgUrl3}}" alt="">
+            </div>
+        
+        </div>
 
         <div class="product-description">{{single.description}}<br>
             <div class="size-buttons">

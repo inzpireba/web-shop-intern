@@ -136,4 +136,12 @@ pushToCart(product: any){
   localStorage.setItem("cartproducts", JSON.stringify(this.cartItems));
   window.location.reload();
 } 
+
+imgId: number = 1;
+chosenImg: any;
+changeImg(img:string, id:number){
+  this.chosenImg = document.getElementById('main-image');
+  this.chosenImg.src = `${img}`;
+  this.imgId = id;
+}
 }
