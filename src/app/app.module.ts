@@ -14,6 +14,7 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
 import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
     OneProductComponent,
     ContactPageComponent,
     ShoppingCartComponent,
-    HeaderComponent
+    HeaderComponent,
+    ControlPanelComponent
   ],
   imports: [
     FormsModule,
