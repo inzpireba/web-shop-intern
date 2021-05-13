@@ -13,6 +13,11 @@ import { OneProductComponent } from './components/one-product/one-product.compon
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel.component';
+import { UserAccountsComponent } from './components/user-accounts/user-accounts.component';
+import { ProductPanelComponent } from './components/product-panel/product-panel.component';
+import { WebsiteInboxComponent } from './components/website-inbox/website-inbox.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HomeComponent,
     OneProductComponent,
     ContactPageComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AdminControlPanelComponent,
+    UserAccountsComponent,
+    ProductPanelComponent,
+    WebsiteInboxComponent
   ],
   imports: [
     FormsModule,

@@ -2,6 +2,7 @@
     <div class="navbar-left">
         <p class="navbar-p"> <i class="fa fa-envelope" aria-hidden="true"></i> info@webstore.ba</p>
         <p id="phone" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> +387 61 123 123</p>
+        <p id="contact_us" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> Contact us </p>
     </div>
     <div class="navbar-right">
         <p class="navbar-p"><a routerLink="/contact"><i class="fa fa-cogs" aria-hidden="true"></i> Contact page</a> </p>
@@ -74,47 +75,46 @@
             <div *ngIf="!reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
         </div>
     </div>
- 
+
     <div *ngIf="reviewClicked" class="review-section">
         <h1 class="review-heading"> {{ reviewNumber }} reviews for White Skirt - Star Pattern </h1>
         <div *ngFor="let review of reviews" class="review_comments">
-                <div class="review_comments_img">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
-                </div>
-                <div class="review_comments_main">
-                    <div class="review_comments_main_top">
-                            <div>
-                                <h1 style="margin: 5px;">Username, Date</h1>
-                            </div>
-                            <div>
-                                 <span *ngFor="let star of stars" class="fa newReviewStars fa-star"></span>
-                            </div>
-                            
+            <div class="review_comments_img">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+            </div>
+            <div class="review_comments_main">
+                <div class="review_comments_main_top">
+                    <div>
+                        <h1 style="margin: 5px;">Username, Date</h1>
                     </div>
-                    <div class="review_comments_main_bottom">
-                            <p> {{ review.review }} </p>
+                    <div>
+                        <span *ngFor="let star of stars" class="fa newReviewStars fa-star"></span>
                     </div>
+
                 </div>
+                <div class="review_comments_main_bottom">
+                    <p> {{ review.review }} </p>
+                </div>
+            </div>
         </div>
         <h1>Add your own review for this item</h1>
         <h1>Logged in as user123 <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
-        <textarea [(ngModel)]="reviewText"
-        placeholder="Your review..." name="reviewText" id="review_input" cols="30" rows="10"></textarea>
-       <div class="star-rating">
-           <div class="star-heading">
-              <h1>Your rating ... </h1>
-           </div>
-           <div class="stars"> 
+        <textarea [(ngModel)]="reviewText" placeholder="Your review..." name="reviewText" id="review_input" cols="30" rows="10"></textarea>
+        <div class="star-rating">
+            <div class="star-heading">
+                <h1>Your rating ... </h1>
+            </div>
+            <div class="stars">
                 <span (click)="addRating(1)" class="fa fa-star rated"></span>
                 <span (click)="addRating(2)" class="fa fa-star rated"></span>
                 <span (click)="addRating(3)" class="fa fa-star rated"></span>
                 <span (click)="addRating(4)" class="fa fa-star rated"></span>
                 <span (click)="addRating(5)" class="fa fa-star rated"></span>
-           </div>
-       </div>
-       <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
-       
-       <div *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
+            </div>
+        </div>
+        <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
+
+        <div *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
     </div>
 
 </div>
