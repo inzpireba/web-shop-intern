@@ -1,3 +1,5 @@
+<div id="main-page-container">
+    
 <app-header></app-header>
 
 <div class="filters-container">
@@ -60,8 +62,8 @@
 </div>
 
 <div class="footer">
-    <div class="footer-left">
-        <p class="contactus"> <i class="fa fa-cogs" aria-hidden="true"></i>
+    <div class="footer-left" routerLink="/contact">
+        <p class="contactus"> <i class="fa fa-phone"></i>
             Contact us</p>
     <div class="social">
         <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
@@ -69,13 +71,17 @@
         <a class="fa fa-twitter" title="" target="_blank" href="#"></a>
     </div>
         </div>
-    <div class="footer-middle">
-        <p> Add product | </p>
-        <p> Edit product | </p>
-        <p> Delete product</p>
+    <div *ngIf="adminVerfiy()" class="footer-middle" routerLink="/control">
+        <i class="fa fa-cogs" aria-hidden="true"></i>
+        <p >Control Panel</p>
     </div>
     <div class="footer-right">
       <p> <i class="fa fa-copyright" aria-hidden="true"></i>
           Webstore@Inzpire.ba All rights reserved.</p>        
     </div>
 </div>
+</div>
+
+<div id="loader" class="load">
+    <hr/><hr/><hr/><hr/>
+  </div>

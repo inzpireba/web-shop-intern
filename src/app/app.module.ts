@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ControlPanelComponent } from './components/control-panel/control-panel.
     ToastrModule.forRoot(),
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

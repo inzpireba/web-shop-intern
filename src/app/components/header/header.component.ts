@@ -16,8 +16,8 @@ interface CartItem{
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   constructor(private service: UserService, private router: Router, private toastr:ToastrService) { }
+
   userDetails: any;
   cartClicked: boolean = false;
   cartProducts: CartItem[];
@@ -26,6 +26,9 @@ export class HeaderComponent implements OnInit {
       this.service.getUserProfile().subscribe(
         res => {
           this.userDetails = res;
+          if(this.userDetails.role == "admin"){
+            localStorage.setItem('role', 'admin');
+          }
         },
         err => {
           console.log(err);
@@ -40,6 +43,7 @@ export class HeaderComponent implements OnInit {
 logout(){
   localStorage.removeItem('cartproducts');
   localStorage.removeItem('token');
+  localStorage.removeItem('role');
   this.toastr.success('Logged out!');
   this.router.navigateByUrl('login');
 }

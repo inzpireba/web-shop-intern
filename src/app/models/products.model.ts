@@ -3,6 +3,8 @@ export class Product {
     price: number = 0;
     size: string = '';
     imgUrl: string = '';
+    imgUrl2: string = '';
+    imgUrl3: string = '';
     description: string = '';
     category: string = '';
     quantity: number = 0;

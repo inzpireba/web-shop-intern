@@ -31,15 +31,24 @@ export class HomeComponent implements OnInit {
   userDetails: any;
   cartClicked: boolean = false;
   cartProducts: any;
+  mainPage: any;
+  loader: any;
   ngOnInit(): void {
+    this.mainPage = document.getElementById("main-page-container");
+    this.loader = document.getElementById("loader");
+    console.log(this.mainPage);
     this.produkti = [];
-    
     this.service.getProducts().subscribe(
       data=> {
         this.products = data as Product[];
         this.produkti = [...this.products];
       }
     );
+
+    setTimeout(() => {
+      this.mainPage.setAttribute("style", "display: block;");
+      this.loader.style.display = "none";
+    }, 1500);
   }
 
   Search() {
@@ -126,6 +135,13 @@ checkDate(date: Date){
   var toDays = toSeconds/86400;
   toDays = Math.round(toDays);
   return (toDays < 7) ?  true : false; 
+}
+adminVerfiy(){
+  if(localStorage.getItem('role') == "admin"){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 produkti: Product[] = [];

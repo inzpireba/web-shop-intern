@@ -1,1 +1,218 @@
-<p>control-panel works!</p>
+<div class="top-header">
+    <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQH_tOsDbM0bPg/company-logo_200_200/0/1581929641926?e=1628121600&v=beta&t=85GhuJfEIgfK988TgKPk0rXWX5sPz0x_jDjc1tOIRzQ">
+    <h1 class="top-header-desc">INZPIRE WEB SHOP</h1>
+</div>
+<div class="container">
+    <div class="admin-image"><img src="https://i.imgur.com/XyywY9v.png"></div>
+    <div class="admin-desc">Jon Snow</div>
+    <div class="admin-id">UserID: 12345678</div>
+    <div class="buttons">
+        <a><button class="admin-buttons" (click)="pageID=1">User Accounts</button></a>
+        <button class="admin-buttons" (click)="pageID=2">Products</button>
+        <button class="admin-buttons">E-Commerce</button>
+        <button class="admin-buttons">Website Inbox</button>
+        <button class="admin-buttons">Setup</button>
+        <button class="admin-buttons">Storage</button>
+    </div>
+</div>
+
+<div class="welcome-back" *ngIf="pageID==0">
+    <div class="welcome-back-text">
+        <p>Welcome back, Admin Jon Snow!</p><img src="https://image.flaticon.com/icons/png/512/1465/1465611.png">
+    </div>
+</div>
+
+<div class="users_display_container" *ngIf="pageID==1">
+
+    <div class="users_content">
+
+       <h1 class="users_heading">Users</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <div class="users_display">
+            <div class="users_info">
+                <p class="info_p">Photo</p>
+                <p class="info_p">UserID</p>
+                <p class="info_p">Username</p>
+                <p class="info_p" style="width: 28%">E-mail</p>
+                <p class="info_p">Role</p>
+                <p class="info_p">Status</p>
+                <p class="info_p">Options</p>
+            </div>
+            <hr>
+            <div class="user" *ngFor="let user of users | paginate: {itemsPerPage:6,currentPage:p};">
+                <div class="user_img_container">
+                    <img src="https://cdn3.iconfinder.com/data/icons/communication-232/384/Account_circle-512.png" alt="">
+                </div>
+                <p>{{user.userId}}</p>
+                <p>{{user.firstname}}</p>
+                <p style="width: 28%">{{user.email}}</p>
+                <p>user</p>
+                <p>Active</p>
+                <div class="user_options">
+                    <i (click)="deleteUser(user)" class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-container">
+            <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<div class="users_display_container" *ngIf="pageID==2">
+
+    <div class="users_content">
+        <div class="heading-container">
+            <h1 class="users_heading">PRODUCTS</h1>
+            <a class="add-product-btn" (click)="openAddModal()">+</a>
+        </div>
+       
+       
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <div class="users_display">
+            <div class="users_info">
+                <p class="info_p">Photo</p>
+                <p class="info_p">ProductID</p>
+                <p class="info_p" style="width: 28%">Name</p>
+                <p class="info_p" >Price</p>
+                <p class="info_p">Qty</p>
+                <p class="info_p">Category</p>
+                <p class="info_p">Options</p>
+            </div>
+            <hr>
+            <div class="user" *ngFor="let product of products | paginate: {itemsPerPage:6,currentPage:p};">
+                <div class="user_img_container">
+                    <img src="{{product.imgUrl}}" alt="">
+                </div>
+                <p>{{product.productId}}</p>
+                <p style="width: 28%">{{product.name}}</p>
+                <p >{{product.price}}</p>
+                <p>{{product.quantity}}</p>
+                <p>{{product.category}}</p>
+                <div class="user_options">
+                    <i (click)="editProduct(product)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i (click)="deleteProduct(product)" class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-container">
+            <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="modalOpened" class="edit_user_modal">
+    <div class="modal_close">
+        <p (click)="modalOpened = !modalOpened">✕</p>
+    </div>
+    <h1 class="modal_heading">Edit Product</h1>
+    <div class="line"></div>
+    <label for="productName" >Name</label>
+    <input id="productName" placeholder="Enter new name..." value="{{editedproduct.name}}" type="text">
+
+    <label for="productPrice">Price</label>
+    <input id="productPrice" value="{{editedproduct.price}}" placeholder="Enter role..." type="text">
+
+    <label for="productQuantity" >Quantity</label>
+    <input id="productQuantity" value="{{editedproduct.quantity}}" placeholder="Enter qty..." type="text">
+
+    <label for="productCategory" >Category</label>
+    <select name="cars" id="productCategory">
+        <option value="{{editedproduct.category}}" selected="{{editedproduct.category}}">CURRENT: {{editedproduct.category}} </option>
+        <option value="jackets">Jackets</option>
+        <option value="tops">Tops</option>
+        <option value="skirts">Skirts</option>
+        <option value="bottoms">Bottoms</option>
+        <option value="shirts">Shirts</option>
+      </select>
+      <label for="prod-description">Description</label>
+      <textarea name="" id="prod-description" cols="30" rows="4" value="{{editedproduct.description}}"></textarea>
+
+      <div class="buttons-modal">
+        <a (click)="saveProduct()" class="btn">Save changes</a>
+        <a href="" class="btn">Discard</a>
+      </div>
+</div>
+
+<div *ngIf="addModal" class="edit_user_modal">
+    <div class="modal_close">
+        <p (click)="addModal = !addModal">✕</p>
+    </div>
+    <h1 class="modal_heading">Add Product</h1>
+    <div class="line"></div>
+    <div class="name-price-container">
+        <div class="name-container">
+            <label for="productName" >Name</label>
+            <input id="productName" placeholder="Enter new name..." type="text">
+        </div>
+        <div class="price-container">
+            <label for="productPrice">Price</label>
+            <input id="productPrice" placeholder="Enter role..." type="text">
+        </div>  
+    </div>
+
+
+    <div class="qty-category-container">
+        <div class="qty-container">
+            <label for="productQuantity" >Quantity</label>
+            <input id="productQuantity"  placeholder="Enter qty..." type="text">
+        </div>
+
+    <div class="category-container">
+        <label for="productCategory" >Category</label>
+        <select name="cars" id="productCategory">
+            <option >CATEGORY</option>
+            <option value="jackets">Jackets</option>
+            <option value="tops">Tops</option>
+            <option value="skirts">Skirts</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="shirts">Shirts</option>
+          </select>
+    </div>
+    </div>
+   
+      <label for="prod-description">Description</label>
+      <textarea name="" id="prod-description" cols="30" rows="4" ></textarea>
+      
+      <label for="imgUrl-input">Main product image (required, direct link, res: 500x500)</label>
+      <input id="imgUrl-input"  placeholder="Enter main image link..." type="text">
+
+      <label for="imgUrl2-input" >Main product image (optional, recommended resolution 500x500px)</label>
+      <input id="imgUrl2-input"  placeholder="Enter image link..." type="text">
+
+      <label for="imgUrl3-input" >Main product image (optional, recommended resolution 500x500px)</label>
+      <input id="imgUrl3-input"  placeholder="Enter image link..." type="text">
+
+      <div class="buttons-modal">
+        <a (click)="saveAddedProduct()" class="btn">Add product</a>
+        <a href="" class="btn">Discard</a>
+      </div>
+</div>
+
+<div *ngIf="deleteModal" class="edit_user_modal deleteModalContainer">
+    <div class="modal_close">
+        <p (click)="deleteModal = !deleteModal">✕</p>
+    </div>
+    <h1 class="delete_modal_heading">Are you sure you want to delete {{productDeletion}}?</h1>
+      <div class="buttons-delete">
+        <a (click)="delete()" class="btn-modals">Yes</a>
+        <a href="" class="btn-modals">No</a>
+      </div>
+</div>
+
+<div *ngIf="deleteUserModal" class="edit_user_modal deleteModalContainer">
+    <div class="modal_close">
+        <p (click)="deleteUserModal = !deleteUserModal">✕</p>
+    </div>
+    <h1 class="delete_modal_heading">Are you sure you want to delete {{userDeletion}}?</h1>
+      <div class="buttons-delete">
+        <a (click)="deleteUserDB()" class="btn-modals">Yes</a>
+        <a href="" class="btn-modals">No</a>
+      </div>
+</div>

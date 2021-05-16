@@ -80,4 +80,51 @@ export class UserService {
   getReviews(){
     return this.http.get(this.reviewURL);
   }
+
+  getUsers(){
+    return this.http.get(this.URL);
+  }
+  editUser(id: number, body: any){
+    this.http.put(`${this.URL}/${id}`, body);
+  }
+  editProduct(id: number, body: any){
+    this.http.put(`${this.productURL}/${id}`, body).subscribe(
+      res=>{ 
+        this.toastr.success(`Successfully edited ${body.name}`);
+        
+      },
+      err=>{console.log(err)}
+    );
+  }
+  addProduct(product: any){
+    this.http.post(this.productURL, product).subscribe(
+      res=>{
+        console.log(res);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+  deleteProduct(id: number){
+    this.http.delete(`${this.productURL}/${id}`).subscribe(
+      res=>{
+        this.toastr.success("Product successfully deleted.");
+      },
+      err=>{
+        console.log(err);
+      }
+    );
+  }
+  deleteUser(id: number){
+    this.http.delete(`${this.URL}/${id}`).subscribe(
+      res=>{
+        this.toastr.success("User successfully deleted.");
+      },
+      err=>{
+        console.log(err);
+      }
+    );
+  }
+    
 }
