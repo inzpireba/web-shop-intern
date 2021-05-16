@@ -22,6 +22,12 @@ export class HeaderComponent implements OnInit {
   cartClicked: boolean = false;
   cartProducts: CartItem[];
   ngOnInit(): void {
+    /*
+      localStorage.removeItem('cartproducts');
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
+    */
+
     if(localStorage.getItem('token') != null){
       this.service.getUserProfile().subscribe(
         res => {
