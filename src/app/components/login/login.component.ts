@@ -19,12 +19,19 @@ export class LoginComponent implements OnInit {
   emailAuthorized: boolean = false;
   pwAuthorized: boolean = false;
   loginUser = new User();
-  parsedJson: any;  
+  parsedJson: any; 
+  loginBtn: any; 
   readonly URL = 'http://localhost:50467/api/User';
   onSubmit(data:any){
     this.loginUser.email = data.uname;
     this.loginUser.password = data.password;
-    this.service.loginUser(this.loginUser);
+    this.loginBtn = document.getElementById("loginBtn");
+    if(this.loginBtn.classList.contains('disabled-button')){
+      
+    }else{
+      this.service.loginUser(this.loginUser);
+    }
+
   }
   ngOnInit(): void {
     if(localStorage.getItem('token') != null){

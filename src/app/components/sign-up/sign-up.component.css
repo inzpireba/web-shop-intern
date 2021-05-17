@@ -1,10 +1,5 @@
 @import '~font-awesome/css/font-awesome.css';
-* {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 .main-reg-container{
     width: 100vw;
@@ -43,9 +38,8 @@ form {
     display: flex;
     flex-direction: column;
     background: #fff;
-    padding: 110px;
-
-
+    padding: 120px;
+ 
 }
 
 form .firstName,
@@ -79,7 +73,7 @@ label>span {
     color: #565e6e;
     display: block;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 25px;
     margin-top: 0.625rem;
     order: 1;
     transition: all 0.25s;
@@ -99,6 +93,7 @@ label input {
 
 label input::placeholder {
     color: #909090;
+    font-size: 13px;
 }
 
 input[type="checkbox"]+div label:hover span::before,
@@ -154,7 +149,7 @@ input[type="submit"]:active {
 }
 
 input[type="submit"]:disabled {
-    background: #808080;
+    background: #D3D3D3;
     transition: all 0.125s;
 }
 
@@ -205,7 +200,7 @@ h2 {
 
 .error-container {
     position: absolute;
-    margin-top: 400px;
+    margin-top: 430px;
 }
 
 
@@ -215,4 +210,60 @@ h2 {
     font-weight: bold;
     font-size: 15px;
     text-align: left;
+}
+
+.signupheader{
+    position: relative;
+    top: -25px;
+    font-size: 50px;
+    font-weight: 900;
+    color: #1A202C;
+}
+
+@media only screen and (max-width: 1000px) {
+    .main-reg-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+    .img-signup {
+        width: 100%;
+        height: 60%;
+        background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .container {
+        height: 50%;
+    }
+    .form-container {
+        position: relative;
+        top: 20px;
+        width: 100vw;
+    }
+    form {
+        background: white;
+        z-index: 999;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    form{
+        padding: 80px;
+    }
+    .nameGroup {
+        flex-direction: column;
+    }
+    .passwordGroup{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    form{
+        padding: 55px;
+    }
 }

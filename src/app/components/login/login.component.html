@@ -28,10 +28,9 @@
           </label>
           <span class="psw"><a href="#" class="psw-link"> Forgot password?</a></span>
         </div>
-     <button 
+     <button id="loginBtn"
         [ngClass]="{'disabled-button': (!uName.valid) || (!password.valid)}" 
-        type="submit"
-        >Login</button>
+        type="submit">LOGIN</button>
     </div>
     <div class="error-container">
       <div class="error">

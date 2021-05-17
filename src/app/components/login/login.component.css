@@ -1,3 +1,4 @@
+
 .login-container{
     width: 100vw;
     height: 100vh;
@@ -64,19 +65,19 @@ form {
     font-size: 50px;
     font-weight: 900;
     color: #1A202C;
-    font-family: 'Roboto', sans-serif;
+
     }
     .remember-label{
         font-size: 15px;
         font-weight: 300;
-        font-family: 'Roboto', sans-serif;
+  
     }
     label{
    
         font-size: 25px;
         font-weight: 900;
         color: #4A5568;
-        font-family: 'Roboto', sans-serif;  
+ 
     }
     button:hover {
     opacity: 0.8;
@@ -120,7 +121,10 @@ form {
         border: none;
         outline: none;
     }
-
+#loginBtn{
+    font-size: 16px;
+    font-weight: bold;
+}
 
     @media only screen and (max-width: 1000px) {
         .login-container{
