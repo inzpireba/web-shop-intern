@@ -1,292 +1,250 @@
 @import '~font-awesome/css/font-awesome.css';
-
-
-.main-reg-container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ .main-reg-container{
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
-
-.img-signup{
-    width: 50%;
-    height: 100%;
-    background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
+ .img-signup{
+     width: 50%;
+     height: 100%;
+     background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
 }
-
-
-#shwpw{
-    margin-left: 90%;
-    transform: translateY(60px);
+ #shwpw{
+     margin-left: 90%;
+     transform: translateY(60px);
 }
-
-.container {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+ .container {
+     width: 50%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
 }
-
-form {
-    border: 3px solid #f2f2f2;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    padding: 120px;
- 
+ form {
+     border: 3px solid #f2f2f2;
+     display: flex;
+     flex-direction: column;
+     background: #fff;
+     padding: 120px;
 }
-
-form .firstName,
-form .firstName a,
-form .email,
-form .email a,
-form .password,
-form .password a,
-form .lastName,
-form .lastName a {
-    color: #000;
-    font-size: 16px;
-    order: 4;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 0.25rem;
-    outline: 1px dashed transparent;
-    outline-offset: 2px;
-
+ form .firstName, form .firstName a, form .email, form .email a, form .password, form .password a, form .lastName, form .lastName a {
+     color: #000;
+     font-size: 16px;
+     order: 4;
+     font-weight: bold;
+     text-align: center;
+     margin-top: 0.25rem;
+     outline: 1px dashed transparent;
+     outline-offset: 2px;
 }
-
-label {
-    display: flex;
-    flex-direction: column;
+ label {
+     display: flex;
+     flex-direction: column;
 }
-.label-password-confirm{
-    margin-top: 13.5px;
-    margin-left:8px;
+ .label-password-confirm{
+     margin-top: 13.5px;
+     margin-left:8px;
 }
-
-label>span {
-    color: #565e6e;
-    display: block;
-    font-weight: bold;
-    font-size: 25px;
-    margin-top: 0.625rem;
-    order: 1;
-    transition: all 0.25s;
+ label>span {
+     color: #565e6e;
+     display: block;
+     font-weight: bold;
+     font-size: 25px;
+     margin-top: 0.625rem;
+     order: 1;
+     transition: all 0.25s;
 }
-
-label>span.required::after {
-    content: "*";
-    font-weight: bold;
-    color: #dd6666;
-    margin-left: 0.125rem;
+ label>span.required::after {
+     content: "*";
+     font-weight: bold;
+     color: #dd6666;
+     margin-left: 0.125rem;
 }
-
-label input {
-    order: 2;
-    outline: none;
+ label input {
+     order: 2;
+     outline: none;
 }
-
-label input::placeholder {
-    color: #909090;
-    font-size: 13px;
+ label input::placeholder {
+     color: #909090;
+     font-size: 13px;
 }
-
-input[type="checkbox"]+div label:hover span::before,
-label:hover input.text {
-    border-color: rgb(92, 92, 92);
+ input[type="checkbox"]+div label:hover span::before, label:hover input.text {
+     border-color: rgb(92, 92, 92);
 }
-
-label input.text:focus,
-label input.text:active {
-    border-color: rgb(92, 92, 92);
-    box-shadow: 0 1px rgb(92, 92, 92);
+ label input.text:focus, label input.text:active {
+     border-color: rgb(92, 92, 92);
+     box-shadow: 0 1px rgb(92, 92, 92);
 }
-
-input.text:focus+span,
-input.text:active+span {
-    color: #000;
+ input.text:focus+span, input.text:active+span {
+     color: #000;
 }
-
-input {
-    border: 1px solid #e1e1e1;
-    border-radius: 2px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    height: 2.25rem;
-    line-height: 1.25rem;
-    margin-top: 0.25rem;
-    order: 2;
-    padding: 0.25rem 0.5rem;
-    width: 15rem;
-    transition: all 0.25s;
+ input {
+     border: 1px solid #e1e1e1;
+     border-radius: 2px;
+     box-sizing: border-box;
+     font-size: 1rem;
+     height: 2.25rem;
+     line-height: 1.25rem;
+     margin-top: 0.25rem;
+     order: 2;
+     padding: 0.25rem 0.5rem;
+     width: 15rem;
+     transition: all 0.25s;
 }
-
-input[type="submit"] {
-    color: #fff;
-    background: #000;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 0.625rem;
-    order: 4;
-    outline: 1px dashed transparent;
-    outline-offset: 2px;
-    padding-left: 0;
-    text-transform: uppercase;
+ input[type="submit"] {
+     color: #fff;
+     background: #000;
+     font-size: 16px;
+     font-weight: bold;
+     margin-top: 0.625rem;
+     order: 4;
+     outline: 1px dashed transparent;
+     outline-offset: 2px;
+     padding-left: 0;
+     text-transform: uppercase;
 }
-
-input[type="submit"]:hover {
-    background: #535d6f;
+ input[type="submit"]:hover {
+     background: #535d6f;
 }
-
-input[type="submit"]:active {
-    background: #000;
-    transition: all 0.125s;
+ input[type="submit"]:active {
+     background: #000;
+     transition: all 0.125s;
 }
-
-input[type="submit"]:disabled {
-    background: #D3D3D3;
-    transition: all 0.125s;
+ input[type="submit"]:disabled {
+     background: #D3D3D3;
+     transition: all 0.125s;
 }
-
-input.ng-invalid.ng-dirty {
-    border-color: #C33131;
+ input.ng-invalid.ng-dirty {
+     border-color: #C33131;
 }
-
-h1 {
-    font-size: 36px;
-    margin-bottom: -5px;
+ h1 {
+     font-size: 36px;
+     margin-bottom: -5px;
 }
-
-h2 {
-    font-weight: lighter;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
+ h2 {
+     font-weight: lighter;
+     margin-bottom: 20px;
+     padding-bottom: 15px;
+     border-bottom: 1px solid #ccc;
 }
-
-.nameGroup {
-    display: flex;
+ .nameGroup {
+     display: flex;
 }
-
-.passwordGroup {
-    display: flex;
+ .passwordGroup {
+     display: flex;
 }
-
-.back {
-    color: #fff;
-    background: #000;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 0.625rem;
-    padding-left: 0;
-    text-transform: uppercase;
-    height: 2.25rem;
-    line-height: 1.25rem;
-    margin-top: 0.25rem;
-    padding: 0.25rem 0.5rem;
-    width: 15rem;
-    transition: all 0.25s;
-    border: none;
+ .back {
+     color: #fff;
+     background: #000;
+     font-size: 16px;
+     font-weight: bold;
+     margin-top: 0.625rem;
+     padding-left: 0;
+     text-transform: uppercase;
+     height: 2.25rem;
+     line-height: 1.25rem;
+     margin-top: 0.25rem;
+     padding: 0.25rem 0.5rem;
+     width: 15rem;
+     transition: all 0.25s;
+     border: none;
 }
-
-.buttonGroup {
-    padding-top: 20px;
+ .buttonGroup {
+     padding-top: 20px;
 }
-
-.error-container {
-    position: absolute;
-    margin-top: 430px;
+ .error-container {
+     position: absolute;
+     margin-top: 430px;
 }
-
-.errorName{
-    height: 30px;
+ .errorName{
+     height: 30px;
 }
-
-.error p {
-    color: #C33131;
-    font-weight: bold;
-    font-size: 15px;
-    text-align: left;
+ .error p {
+     color: #C33131;
+     font-weight: bold;
+     font-size: 15px;
+     text-align: left;
 }
-
-.signupheader{
-    position: relative;
-    top: -25px;
-    font-size: 50px;
-    font-weight: 900;
-    color: #1A202C;
+ .signupheader{
+     position: relative;
+     top: -25px;
+     font-size: 50px;
+     font-weight: 900;
+     color: #1A202C;
 }
-
-@media only screen and (max-width: 1100px) {
-    .main-reg-container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column-reverse;
+ @media only screen and (max-width: 1100px) {
+     input[type="submit"]{
+         font-size: 10px;
     }
-    .img-signup {
-        width: 100%;
-        height: 60%;
-        background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+     .back{
+         font-size: 10px;
     }
-    .container {
-        height: 50%;
+     .main-reg-container {
+         width: 100vw;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column-reverse;
     }
-    .form-container {
-        position: relative;
-        top: 20px;
-        width: 100vw;
+     .img-signup {
+         width: 100%;
+         height: 60%;
+         background-image: url('https://gyazo.com/0ba70eb9931ca72e4a5426864382bbb4.jpg');
+         background-repeat: no-repeat;
+         background-size: cover;
     }
-    form {
-        background: white;
-        z-index: 999;
+     .container {
+         height: 50%;
+    }
+     .form-container {
+         position: relative;
+         top: 20px;
+         width: 100vw;
+    }
+     form {
+         background: white;
+         z-index: 999;
     }
 }
-
-@media only screen and (max-width: 750px) {
-    form{
-        padding: 80px;
-        border: none;
+ @media only screen and (max-width: 750px) {
+     form{
+         padding: 80px;
+         border: none;
     }
-    .nameGroup {
-        flex-direction: column;
+     .nameGroup {
+         flex-direction: column;
     }
-    .passwordGroup{
-        flex-direction: column;
+     .passwordGroup{
+         flex-direction: column;
     }
-    .error p{
-        font-size: 10px;
-        margin: 0;
+     .error p{
+         font-size: 10px;
+         margin: 0;
     }
-    .signupheader{
-        font-size: 30px;
+     .signupheader{
+         font-size: 30px;
     }
-    .headerbelow{
-        font-size: 15px;
+     .headerbelow{
+         font-size: 15px;
     }
-    label>span{
-        font-size: 13px;
+     label>span{
+         font-size: 13px;
     }
-    .error-container {
-        margin-top: 660px;
+     .error-container {
+         margin-top: 660px;
     }
-    .label-password-confirm{
-        margin-left: 0px;
+     .label-password-confirm{
+         margin-left: 0px;
     }
 }
-
-@media only screen and (max-width: 450px) {
-    form{
-        padding: 55px;
+ @media only screen and (max-width: 450px) {
+     form{
+         padding: 55px;
     }
 }

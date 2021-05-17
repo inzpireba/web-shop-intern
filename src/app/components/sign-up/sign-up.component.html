@@ -1,58 +1,54 @@
 <div class="main-reg-container">
-
     <div class="container">
-        <form #UserRegistrationForm="ngForm" (ngSubmit)="onSubmit(UserRegistrationForm.value)">
-            <h1 class="signupheader">Sign Up</h1>
-            <h2 class="headerbelow">Let's sign up first and start shopping!</h2>
-            <div class="nameGroup">
-                <label class="label-firstName">
-             <input ngModel name="firstName" type="text" name="firstName" #firstName="ngModel" placeholder="Enter your first name" required>
-             <span class="required">First name</span>
-             </label>&nbsp;&nbsp;
-                <label class="label-lastName">
-             <input ngModel name="lastName" type="text" name="lastName" #lastName="ngModel" placeholder="Enter your last name"  required>
-             <span class="required">Last name</span>
-             </label>
-            </div>
-            <div class="error errorName">
-                <p *ngIf="!firstName.valid && firstName.dirty || !lastName.valid && lastName.dirty">Please fill out all the fields.</p>
-            </div>
-            <div>
-                <label class="label-email">
-             <input autocomplete="off" ngModel name="email" type="text" name="email" #email="ngModel" placeholder="Enter your email" [pattern]="emailPattern" required>
-             <span class="required">Email address</span>
-             </label>
-            </div>
-            <div class="passwordGroup">
-                <label class="label-password">
-                    <input [type]="hide ? 'password': 'text'" ngModel name="password" #password="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password" required>
-             <span class="required">Password</span>
-             <i id="shwpw" class="fa" (click)="hide=!hide" aria-hidden="true" [ngClass]="{
-                'fa-eye': !hide,
-                'fa-eye-slash': hide
-              }"></i>
-             </label>
-                <label class="label-password-confirm">
-                    <input ngModel name="password2" #password2="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password2" required>
-             <span class="required" >Confirm password</span>
-                
-            </label>
-            </div>
-          
-            <div class="buttonGroup">
-                <input type="submit" [disabled]="!UserRegistrationForm.valid" value="Sign up" />&nbsp;
-                <a href="/"><button type="button" class="back">Back</button></a>
-            </div>
-            <div class="error-container">
-            <div class="error">
-                <p *ngIf="!email.valid && email.dirty">Please use a valid email address! (e.g. something@domain)</p>
-                <p *ngIf="password.hasError('minlength')">Your password is too short.</p>
-                <p *ngIf="password.value !== password2.value && password2.dirty">Your passwords do not match.</p>
-            </div>
-        </div>
-        </form>
+       <form #UserRegistrationForm="ngForm" (ngSubmit)="onSubmit(UserRegistrationForm.value)">
+       <h1 class="signupheader">Sign Up</h1>
+       <h2 class="headerbelow">Let's sign up first and start shopping!</h2>
+       <div class="nameGroup">
+          <label class="label-firstName">
+          <input ngModel name="firstName" type="text" name="firstName" #firstName="ngModel" placeholder="Enter your first name" required>
+          <span class="required">First name</span>
+          </label>&nbsp;&nbsp;
+          <label class="label-lastName">
+          <input ngModel name="lastName" type="text" name="lastName" #lastName="ngModel" placeholder="Enter your last name"  required>
+          <span class="required">Last name</span>
+          </label>
+       </div>
+       <div class="error errorName">
+          <p *ngIf="!firstName.valid && firstName.dirty || !lastName.valid && lastName.dirty">Please fill out all the fields.</p>
+       </div>
+       <div>
+          <label class="label-email">
+          <input autocomplete="off" ngModel name="email" type="text" name="email" #email="ngModel" placeholder="Enter your email" [pattern]="emailPattern" required>
+          <span class="required">Email address</span>
+          </label>
+       </div>
+       <div class="passwordGroup">
+          <label class="label-password">
+          <input [type]="hide ? 'password': 'text'" ngModel name="password" #password="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password" required>
+          <span class="required">Password</span>
+          <i id="shwpw" class="fa" (click)="hide=!hide" aria-hidden="true" [ngClass]="{
+          'fa-eye': !hide,
+          'fa-eye-slash': hide
+          }"></i>
+          </label>
+          <label class="label-password-confirm">
+          <input ngModel name="password2" #password2="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password2" required>
+          <span class="required" >Confirm password</span>
+          </label>
+       </div>
+       <div class="buttonGroup">
+          <input type="submit" [disabled]="!UserRegistrationForm.valid" value="Sign up" />&nbsp;
+          <a href="/"><button type="button" class="back">Back</button></a>
+       </div>
+       <div class="error-container">
+          <div class="error">
+             <p *ngIf="!email.valid && email.dirty">Please use a valid email address! (e.g. something@domain)</p>
+             <p *ngIf="password.hasError('minlength')">Your password is too short.</p>
+             <p *ngIf="password.value !== password2.value && password2.dirty">Your passwords do not match.</p>
+          </div>
+       </div>
+       </form>
     </div>
     <div class="img-signup">
-       
     </div>
-</div>
+ </div>
