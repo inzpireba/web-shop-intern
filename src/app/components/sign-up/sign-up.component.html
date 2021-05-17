@@ -3,7 +3,7 @@
     <div class="container">
         <form #UserRegistrationForm="ngForm" (ngSubmit)="onSubmit(UserRegistrationForm.value)">
             <h1 class="signupheader">Sign Up</h1>
-            <h2>Let's sign up first and start shopping!</h2>
+            <h2 class="headerbelow">Let's sign up first and start shopping!</h2>
             <div class="nameGroup">
                 <label class="label-firstName">
              <input ngModel name="firstName" type="text" name="firstName" #firstName="ngModel" placeholder="Enter your first name" required>
@@ -14,8 +14,8 @@
              <span class="required">Last name</span>
              </label>
             </div>
-            <div class="error">
-                <p *ngIf="!firstName.valid && firstName.dirty || !lastName.valid && lastName.dirty">Field cannot be empty. Please fill out your information.</p>
+            <div class="error errorName">
+                <p *ngIf="!firstName.valid && firstName.dirty || !lastName.valid && lastName.dirty">Please fill out all the fields.</p>
             </div>
             <div>
                 <label class="label-email">
@@ -33,8 +33,8 @@
               }"></i>
              </label>
                 <label class="label-password-confirm">
-                    <input style="margin-left:8px;" ngModel name="password2" #password2="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password2" required>
-             <span class="required" style="margin-left:8px;">Confirm password</span>
+                    <input ngModel name="password2" #password2="ngModel" minlength="6" type="password" placeholder="Enter your password" name="password2" required>
+             <span class="required" >Confirm password</span>
                 
             </label>
             </div>

@@ -67,6 +67,7 @@ label {
 }
 .label-password-confirm{
     margin-top: 13.5px;
+    margin-left:8px;
 }
 
 label>span {
@@ -203,7 +204,9 @@ h2 {
     margin-top: 430px;
 }
 
-
+.errorName{
+    height: 30px;
+}
 
 .error p {
     color: #C33131;
@@ -220,7 +223,7 @@ h2 {
     color: #1A202C;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
     .main-reg-container {
         width: 100vw;
         height: 100vh;
@@ -253,12 +256,32 @@ h2 {
 @media only screen and (max-width: 750px) {
     form{
         padding: 80px;
+        border: none;
     }
     .nameGroup {
         flex-direction: column;
     }
     .passwordGroup{
         flex-direction: column;
+    }
+    .error p{
+        font-size: 10px;
+        margin: 0;
+    }
+    .signupheader{
+        font-size: 30px;
+    }
+    .headerbelow{
+        font-size: 15px;
+    }
+    label>span{
+        font-size: 13px;
+    }
+    .error-container {
+        margin-top: 660px;
+    }
+    .label-password-confirm{
+        margin-left: 0px;
     }
 }
 
