@@ -16,6 +16,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { HeaderComponent } from './components/header/header.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { AuthGuard } from './auth/auth.guard';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthGuard } from './auth/auth.guard';
     ContactPageComponent,
     ShoppingCartComponent,
     HeaderComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,

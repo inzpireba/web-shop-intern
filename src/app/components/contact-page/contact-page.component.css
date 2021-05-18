@@ -114,16 +114,7 @@ i {
     padding: 10px 20px;
 }
 
-.footer {
-    width: 100%;
-    height: 80px;
-    background: #E8E8E8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    color: black;
-}
+
 
 .social {
     display: flex;
@@ -152,33 +143,6 @@ i {
     margin: 20px;
 }
 
-.footer-left {
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 3px;
-}
-
-.footer-middle p {
-    margin: 0px 3px;
-    font-weight: bold;
-}
-
-.footer-right {
-    margin: 10px;
-}
-
-.footer-right p {
-    margin: 5px;
-}
 
 .contact-title-bar {
     background: #f9f9f9;

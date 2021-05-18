@@ -15,7 +15,7 @@
     <div class="product-image-description-container">
 
         <div class="cart-header">
-            <div class="cart-header-left">Product details</div>
+            <div class="cart-header-left">Product</div>
             <div class="cart-header-right"><span>Qty</span> <span>Price</span><span>Total</span></div>
         </div>
         <div class="img-description" *ngFor='let product of cartProducts'>
@@ -23,7 +23,6 @@
             <div class="desc-text">Product name: {{product.name}}</div>
             <div class="product-info"><span><button class="qty-buttons">{{product.quantity}}</button></span> <span>${{product.price/product.quantity}}</span> &nbsp;&nbsp;&nbsp;<span>${{product.price}}</span></div>
         </div>
-
     </div>
     <div class="order-summary">
         <div class="summary-title">ORDER SUMMARY</div>
@@ -48,15 +47,4 @@
 
 
 
-<div class="footer">
-    <div class="footer-left">
-        <p class="contactus"> <i class="fa fa-truck" aria-hidden="true"></i> Free shipping worldwide</p>
-
-    </div>
-    <div class="footer-middle">
-
-    </div>
-    <div class="footer-right">
-        <p> <i class="fa fa-copyright" aria-hidden="true"></i> Webstore@Inzpire.ba All rights reserved.</p>
-    </div>
-</div>
+<app-footer></app-footer>

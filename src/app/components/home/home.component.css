@@ -37,63 +37,6 @@
 }
 
 
-.footer {
-    width: 100%;
-    height: 80px;
-    background: #E8E8E8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    font-family: "Rubik";
-    color: black;
-}
-.social [class*="fa fa-"] {
-    background-color: #333;
-    border-radius: 30px;
-    color: #fff;
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    margin: auto 3px;
-    width: 30px;
-    font-size: 15px;
-    text-align: center;
-    position: relative;
-    top: 5px;
-    transition: 0.3s;
-}
-.social i:hover{
-    transform: scale(1.1);
-}
-.contactus {
-    margin: 20px;
-}
-.footer-left {
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.footer-middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 3px;
-    cursor: pointer;
-}
-.footer-middle p {
-    margin: 0px 3px;
-    font-weight: bold;
-}
-.footer-right {
-    margin: 10px;
-}
-.footer-right p {
-    margin: 5px;
-}
 
 .pagination-container {
     margin-top: 15px;

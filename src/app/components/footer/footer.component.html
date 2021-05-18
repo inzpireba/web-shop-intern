@@ -1,0 +1,19 @@
+<div class="footer">
+    <div class="footer-left" routerLink="/contact">
+        <p class="contactus"> <i class="fa fa-phone"></i>
+            Contact us</p>
+    <div class="social">
+        <a class="fa fa-facebook" title="" target="_blank" href="#"></a>
+        <a class="fa fa-instagram" title="" target="_blank" href="#"></a>
+        <a class="fa fa-twitter" title="" target="_blank" href="#"></a>
+    </div>
+        </div>
+    <div *ngIf="adminVerify()" class="footer-middle" routerLink="/control">
+        <i class="fa fa-cogs" aria-hidden="true"></i>
+        <p >Control Panel</p>
+    </div>
+    <div class="footer-right">
+      <p> <i class="fa fa-copyright" aria-hidden="true"></i>
+          Webstore@Inzpire.ba All rights reserved.</p>        
+    </div>
+</div>

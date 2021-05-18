@@ -119,12 +119,14 @@ export class HomeComponent implements OnInit {
   return this.produkti;
 }
 id : number;
+url: string;
 openProduct(product:any){
-  this.id = product.productId;
+  this.id = product.productId; /*
   localStorage.setItem('productID', JSON.stringify({
     productId: this.id
-  }));
-  this.router.navigateByUrl('product');
+  })); */
+  this.router.navigate(['/product', this.id]);
+  //this.router.navigateByUrl('product');
 }
 
 checkDate(date: Date){
@@ -135,13 +137,6 @@ checkDate(date: Date){
   var toDays = toSeconds/86400;
   toDays = Math.round(toDays);
   return (toDays < 7) ?  true : false; 
-}
-adminVerfiy(){
-  if(localStorage.getItem('role') == "admin"){
-    return true;
-  }else{
-    return false;
-  }
 }
 
 produkti: Product[] = [];

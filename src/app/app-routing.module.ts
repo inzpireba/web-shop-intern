@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component'
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'register', component: SignUpComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'product', component: OneProductComponent},
+  { path: 'product/:id', component: OneProductComponent},
   { path: 'contact', component: ContactPageComponent},
   { path: 'cart', component: ShoppingCartComponent},
   { path: 'header', component: HeaderComponent},
