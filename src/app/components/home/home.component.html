@@ -1,4 +1,6 @@
 <div id="main-page-container">
+
+
     
 <app-header></app-header>
 
@@ -36,31 +38,31 @@
 </div>
 
 <div class="products-section-container">
-    <div class="product-container" 
-    *ngFor="let product of produkti | paginate: {itemsPerPage:6,currentPage:p};">
-    <div *ngIf="(product.quantity==0)" class="soldout-container">
-        <img class="soldout-sticker" src="https://gyazo.com/55f27a92b05156097ecea0628f4e9517.png" alt="">
-    </div>
-    <div *ngIf="(checkDate(product.dateAdded))" class="new-sticker-container">
-        <img class="new-sticker" src="https://gyazo.com/06c6fe4c939ec2c5ee497c51df82f509.png" alt="">
-    </div>
-        <div class="product-image">
-           <a (click)="openProduct(product)"><img src="{{product.imgUrl}}" alt=""></a> 
-        </div>
-        <div class="product-info">
-            <p (click)="checkDate(product.dateAdded)">{{product.name}}</p>
-            <p class="product-price">${{product.price}}</p>
-        </div>
-    </div>
     <div *ngIf="noResult" class="product-container">
         <p>Nema rezultata!</p>
     </div>
-</div>
+    <div (click)="openProduct(product)" *ngFor="let product of produkti | paginate: {itemsPerPage:8,currentPage:p};" class="product-card"><img class="product-img" src="{{product.imgUrl}}" alt="product" width="100%"/>
+        <div *ngIf="(product.quantity==0)" class="soldout-container">
+            <img class="soldout-sticker" src="https://gyazo.com/55f27a92b05156097ecea0628f4e9517.png" alt="">
+        </div>
+        <div *ngIf="(checkDate(product.dateAdded))" class="new-sticker-container">
+            <img class="new-sticker" src="https://gyazo.com/06c6fe4c939ec2c5ee497c51df82f509.png" alt="">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">{{product.name}}</h3>
+          <div class="product-price"><span class="product-price-new">${{product.price}}</span><span class="product-price-old">$ 456</span></div>
+          <div class="product-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam deleniti corrupti quam delectus placeat nihil, nobis dolore maxime ipsum sequi numquam, architecto accusantium quia excepturi, rerum labore harum iure.</div>
+          <div class="product-btn">
+            <button (click)="openProduct(product)"><i class="fa fa-cart-plus icon"></i>add to cart</button>
+          </div>
+        </div>
+      </div>
 
 <div class="pagination-container">
     <pagination-controls (pageChange)=" p = $event"></pagination-controls>
 </div>
 
+</div>
 <div class="footer">
     <div class="footer-left" routerLink="/contact">
         <p class="contactus"> <i class="fa fa-phone"></i>
@@ -80,8 +82,8 @@
           Webstore@Inzpire.ba All rights reserved.</p>        
     </div>
 </div>
-</div>
 
+</div>
 <div id="loader" class="load">
     <hr/><hr/><hr/><hr/>
   </div>

@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.mainPage.setAttribute("style", "display: block;");
       this.loader.style.display = "none";
-    }, 1500);
+    }, 800);
   }
 
   Search() {
