@@ -58,12 +58,12 @@ export class UserService {
   single: any;
   test: any;
   productId: number;
-  initProduct(){
-    var object = localStorage.getItem('productID');
+  initProduct(id: any){
+   /* var object = localStorage.getItem('productID');
     object = JSON.parse(object);
-    this.test = object;
-    this.productId = this.test.productId;
-    return this.http.get(`${this.productURL}/${this.productId}`);
+    this.test = object; 
+    this.productId = this.test.productId; */
+    return this.http.get(`${this.productURL}/${id}`);
   }
 
   getUserProfile(){

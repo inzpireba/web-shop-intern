@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 interface Review{
   comment: String,
@@ -21,7 +22,7 @@ interface CartItem{
 })
 export class OneProductComponent{
 
-  constructor(private service: UserService) { }
+  constructor(private service: UserService, private _Activatedroute:ActivatedRoute) { }
   productQuantity: number = 2;
   averageRating: number = 0;
   single: any;
@@ -35,8 +36,13 @@ export class OneProductComponent{
   oneReview = <Review>{};
   cartItems: CartItem[] = [];
   cartItem: CartItem;
+  id: any;
   ngOnInit() : void{
-    this.service.initProduct().subscribe(
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.id = params.get('id'); 
+  });
+
+    this.service.initProduct(this.id).subscribe(
       data=> {
          this.single = data;
       }
@@ -53,6 +59,7 @@ export class OneProductComponent{
         }
       );
     }
+ 
   }
 
 
@@ -123,7 +130,7 @@ export class OneProductComponent{
     },100)
   }
 }
-
+exists: boolean = false;
 pushToCart(product: any){
   this.cartItems = JSON.parse(localStorage.getItem("cartproducts") || "[]");
   this.cartItem = {
@@ -132,9 +139,18 @@ pushToCart(product: any){
     price: product.price*this.productQuantity,
     quantity: this.productQuantity
   }
-  this.cartItems.push(this.cartItem);
+  console.log(this.cartItems);
+  for(let i=0; i<this.cartItems.length; i++){
+    if(this.cartItems[i].name == this.cartItem.name){
+      this.cartItems[i].quantity+= this.cartItem.quantity;
+      this.exists = true;
+    }
+  }
+  if(!this.exists){
+    this.cartItems.push(this.cartItem);
+  }
   localStorage.setItem("cartproducts", JSON.stringify(this.cartItems));
-  window.location.reload();
+ 
 } 
 
 imgId: number = 1;

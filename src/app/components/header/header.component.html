@@ -10,7 +10,7 @@
     <div class="navbar-right">
         <p (click)='cartClicked = !cartClicked' class="navbar-p cart"><span class="cart-text">Your cart</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
         <div *ngIf='cartClicked' class="cart-content">
-            <div *ngIf="cartProducts" class="cart-items-container">
+            <div *ngIf="cartProducts.length > 0" class="cart-items-container">
                 <div class="cart-item" *ngFor="let product of cartProducts">
                     <div class="img-container">
                         <img src="{{product.img}}" alt="">
@@ -21,19 +21,19 @@
                         <p>Quantity: {{product.quantity}}</p>
                     </div>
                     <div class="close">
-                        <a href="">✖</a>
+                        <a (click)="removeFromCart(product)">✖</a>
                     </div>
                 </div>
             </div>
 
-            <div *ngIf="!cartProducts" class="cart-items-container">
+            <div *ngIf="cartProducts.length == 0" class="cart-items-container">
                 <img class="empty-cart-img" src="https://i.gyazo.com/afa6a28d0ee0b5e7d55b7a5aecdfedec.png" alt="">
             </div>
            
-            <div class="button-checkout" *ngIf='cartProducts'>
+            <div class="button-checkout" *ngIf='cartProducts.length > 0'>
                 <a routerLink="/cart">Order now</a>
             </div>
-            <div class="button-checkout button-disabled" *ngIf='!cartProducts'>
+            <div class="button-checkout button-disabled" *ngIf='cartProducts.length == 0'>
                 <a>Order now</a>
             </div>
         </div>

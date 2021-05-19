@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   cartClicked: boolean = false;
   cartProducts: CartItem[];
   ngOnInit(): void {
+   
     /*
       localStorage.removeItem('cartproducts');
   localStorage.removeItem('token');
@@ -44,6 +45,14 @@ export class HeaderComponent implements OnInit {
     if(localStorage.getItem('cartproducts')!= null){
       this.cartProducts = JSON.parse(localStorage.getItem("cartproducts") || "[]");
     }
+  
+
+  }
+
+  removeFromCart(product: any){
+     this.cartProducts = this.cartProducts.filter(i=> i.name != product.name);
+     localStorage.setItem("cartproducts", JSON.stringify(this.cartProducts));
+
   }
   
 logout(){

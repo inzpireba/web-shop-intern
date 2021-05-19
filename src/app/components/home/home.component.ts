@@ -121,10 +121,10 @@ export class HomeComponent implements OnInit {
 id : number;
 url: string;
 openProduct(product:any){
-  this.id = product.productId; /*
+  this.id = product.productId; 
   localStorage.setItem('productID', JSON.stringify({
     productId: this.id
-  })); */
+  })); 
   this.router.navigate(['/product', this.id]);
   //this.router.navigateByUrl('product');
 }
