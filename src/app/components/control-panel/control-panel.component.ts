@@ -35,6 +35,7 @@ export class ControlPanelComponent implements OnInit {
 
   constructor(private service: UserService) { }
   users: any;
+  userDetails: any;
   modalOpened: boolean = false;
   addModal: boolean = false;
   deleteModal: boolean = false;
@@ -57,6 +58,16 @@ export class ControlPanelComponent implements OnInit {
       err=>{console.log(err);
       }
     );
+    if(localStorage.getItem('token') != null){
+      this.service.getUserProfile().subscribe(
+        res => {
+          this.userDetails = res;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   editedproduct: any;

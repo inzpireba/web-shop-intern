@@ -37,7 +37,8 @@
                 background: #FF5367;padding:9px;">20% off for new users!</span></div>
 
             <div class="buy-qty-buttons">
-                <button class="qty-buttons">QUANTITY: <span class="quantity-number">{{productQuantity}}</span></button>
+                <button class="qty-buttons">QUANTITY:</button>
+                <input class="qtyInput-buttons"  type="number" id="productQty" value=1>
                 <button (click)='pushToCart(single)' class="buy-buttons">ADD TO CART</button>
                 <!--not functional until the 3rd sprint (?)-->
             </div>

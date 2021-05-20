@@ -7,7 +7,7 @@
 </div>
 <div class="container">
     <div class="admin-image"><img src="https://i.imgur.com/XyywY9v.png"></div>
-    <div class="admin-desc">Jon Snow</div>
+    <div class="admin-desc">{{userDetails.firstname}} {{userDetails.lastname}}</div>
     <div class="admin-id">UserID: 12345678</div>
     <div class="buttons">
         <a><button class="admin-buttons" (click)="pageID=1">User Accounts</button></a>
@@ -21,7 +21,7 @@
 
 <div class="welcome-back" *ngIf="pageID==0">
     <div class="welcome-back-text">
-        <p>Welcome back, Sale!</p><img src="https://image.flaticon.com/icons/png/512/1465/1465611.png">
+        <p>Welcome back, {{userDetails.firstname}}!</p><img src="https://image.flaticon.com/icons/png/512/1465/1465611.png">
     </div>
 </div>
 
