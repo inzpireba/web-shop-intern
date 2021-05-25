@@ -25,6 +25,9 @@
     cursor: pointer;
     padding: 10px 20px;
 }
+.filter-p:hover{
+  color: #4b4b4b;
+}
 
 .products-section-container {
     width: 100%;

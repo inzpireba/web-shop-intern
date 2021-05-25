@@ -7,7 +7,7 @@
         <p class="filter-p">Free returns to store</p>
     </div>
 </div>
-<div *ngIf='cartProducts' class="product-container">
+<div *ngIf='cartProducts.length > 0' class="product-container">
     <div class="product-title-bar">
         <div class="product-name">SHOPPING CART</div>
         <div class="product-category">Here's what you got!</div>
@@ -24,20 +24,30 @@
             <div class="product-info"><span><button class="qty-buttons">{{product.quantity}}</button></span> <span>${{product.price/product.quantity}}</span> &nbsp;&nbsp;&nbsp;<span>${{product.price}}</span></div>
         </div>
     </div>
-    <div class="order-summary">
+    <div class="summary-main-container">
         <div class="summary-title">ORDER SUMMARY</div>
-        <div class="summary-content">
-            <div class="summary-content-top-right"><span>QTY</span> <span>TOTAL</span></div>
-            <div class="summary-content-middle"><span>ITEMS</span> <span>{{totalQty}}</span> <span>${{totalPrice}}</span></div>
-            <div class="summary-content-bottom"><span>SHIPPING</span> <span>$0.00</span></div>
-            <div class="summary-content-total"><span>TOTAL</span> <span>${{totalPrice}}</span></div>
+        <div class="summary">
+            <div class="items-container">
+                <div class="items"><h1>ITEMS</h1></div>
+                <div class="cost"><h1>${{totalPrice}}</h1></div>
+            </div>
+            <div class="items-container shipping">
+                <div class="items"><h1>SHIPPING</h1></div>
+                <div class="cost"><h1>$0.00</h1></div>
+            </div>
+            <div class="items-container">
+                <div class="items"><h1>TOTAL</h1></div>
+                <div class="cost"><h1>${{totalPrice}}</h1></div>
+            </div>
             <button class="buy-buttons">CHECKOUT</button>
         </div>
         <div class="back-button"><a routerLink="/">BACK</a></div>
     </div>
+    
+ 
 </div>
 
-<div *ngIf='!cartProducts' class="product-container product-empty">
+<div *ngIf='cartProducts.length == 0' class="product-container product-empty">
     <div class="product-title-bar">
         <div class="product-name">SHOPPING CART</div>
         <div class="product-category">You haven't added any products to your cart yet! Click here to view the catalog.</div>

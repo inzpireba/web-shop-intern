@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   cartClicked: boolean = false;
   cartProducts: CartItem[];
   ngOnInit(): void {
-   
     /*
       localStorage.removeItem('cartproducts');
   localStorage.removeItem('token');

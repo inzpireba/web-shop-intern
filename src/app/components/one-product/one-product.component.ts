@@ -141,7 +141,7 @@ pushToCart(product: any){
     price: product.price*this.productQuantity.value,
     quantity: this.productQuantity.value
   }
-  console.log(this.cartItems);
+
   for(let i=0; i<this.cartItems.length; i++){
     if(this.cartItems[i].name == this.cartItem.name){
       this.cartItems[i].quantity+= this.cartItem.quantity;
