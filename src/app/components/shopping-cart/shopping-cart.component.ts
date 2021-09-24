@@ -21,10 +21,10 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.getItem('cartproducts')!= null){
       this.cartProducts = JSON.parse(localStorage.getItem("cartproducts") || "[]");
-
+      console.log(this.cartProducts)
       for(let i=0; i<this.cartProducts.length; i++){
         this.totalQty += this.cartProducts[i].quantity;
-        this.totalPrice += this.cartProducts[i].price;
+        this.totalPrice += this.cartProducts[i].price*this.cartProducts[i].quantity;
       }
     }
   }

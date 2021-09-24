@@ -266,6 +266,10 @@ i {
         color: #69d3e4;
         font-weight: normal;
     }
+    .hero-user{
+        color: #d8f3f7;
+        font-weight: normal;
+    }
   }
 
   @media only screen and (max-width: 500px) {

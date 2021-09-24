@@ -21,7 +21,7 @@
         <div class="img-description" *ngFor='let product of cartProducts'>
             <div class="product-image"><img src="{{product.img}}"></div>
             <div class="desc-text">Product name: {{product.name}}</div>
-            <div class="product-info"><span><button class="qty-buttons">{{product.quantity}}</button></span> <span>${{product.price/product.quantity}}</span> &nbsp;&nbsp;&nbsp;<span>${{product.price}}</span></div>
+            <div class="product-info"><span><button class="qty-buttons">{{product.quantity}}</button></span> <span>${{product.price}}</span> &nbsp;&nbsp;&nbsp;<span>${{product.price*product.quantity}}</span></div>
         </div>
     </div>
     <div class="summary-main-container">

@@ -23,7 +23,7 @@ interface CartItem{
 export class OneProductComponent{
 
   constructor(private service: UserService, private _Activatedroute:ActivatedRoute) { }
-  productQuantity: any;
+  productQuantity: number;
   averageRating: number = 0;
   single: any;
   userDetails: any;
@@ -131,15 +131,19 @@ export class OneProductComponent{
   }
 }
 exists: boolean = false;
+temp: any;
+qty: number = 0;
 pushToCart(product: any){
   this.cartItems = JSON.parse(localStorage.getItem("cartproducts") || "[]");
-  this.productQuantity = document.getElementById("productQty");
-  console.log(this.productQuantity.value);
+  this.temp = document.getElementById("productQty");
+  this.productQuantity = parseInt(this.temp.value);
+  this.qty = product.price*this.productQuantity;
+  console.log(this.cartItems);
   this.cartItem = {
     img: product.imgUrl,
     name: product.name,
-    price: product.price*this.productQuantity.value,
-    quantity: this.productQuantity.value
+    price: this.qty,
+    quantity: this.productQuantity
   }
 
   for(let i=0; i<this.cartItems.length; i++){

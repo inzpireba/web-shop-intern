@@ -43,7 +43,7 @@
     <div class="hero-inside">
         <div class="hero-heading-container">
             <h1 class="hero-heading">Inzpire webshop</h1>
-            <h1 *ngIf="userDetails" class="hero-user">Welcome back, {{userDetails.firstname}}</h1>
+            <h1 *ngIf="userDetails" class="hero-user">Welcome back, <strong>{{userDetails.firstname}}</strong></h1>
         </div>
         <div class="hero-buttons-container" *ngIf="userDetails">
             <a (click)="logout()" class="hero-buttons">Log out</a>
