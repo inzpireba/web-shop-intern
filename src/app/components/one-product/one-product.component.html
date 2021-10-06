@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="product-container">
     <div class="product-title-bar">
-        <div class="product-name">{{single.name}}</div>
-        <div class="product-category">Category: {{single.category}}</div>
+        <div class="product-name">{{single.imeProizvoda}}</div>
+        <div class="product-category">Category: {{single.kategorijaProizvoda}}</div>
         <div class="product-review">
             <img *ngIf="averageRating==5" src="https://gyazo.com/b50e0062a8c92776c48b1f28e97a8dc7.png" alt="">
             <img *ngIf="averageRating==4" src="https://gyazo.com/46cd360876dca96540002b9601cdf552.png" alt="">
@@ -14,17 +14,11 @@
     <div class="product-image-description-container">
         <div class="product-image">
             <div class="img-main">
-                <img id="main-image" src="{{single.imgUrl}}">
-            </div>
-            <div class="side-imgs">
-                <img (click)="changeImg(single.imgUrl, 1)" [ngClass]="{'img-active': imgId==1}" src="{{single.imgUrl}}">
-                <img (click)="changeImg(single.imgUrl2, 2)" [ngClass]="{'img-active': imgId==2}" src="{{single.imgUrl2}}" alt="">
-                <img (click)="changeImg(single.imgUrl3, 3)" [ngClass]="{'img-active': imgId==3}" src="{{single.imgUrl3}}" alt="">
-            </div>
-        
+                <img id="main-image" src="{{single.slikaUrl}}">
+            </div> 
         </div>
 
-        <div class="product-description"><p>{{single.description}}</p><br>
+        <div class="product-description"><p>{{single.opisProizvoda}}</p><br>
             <div class="size-buttons">
                 <button class="sizes">XS</button>
                 <button class="sizes">S</button>
@@ -32,7 +26,7 @@
                 <button class="sizes">L</button>
                 <button class="sizes">XL</button>
             </div>
-            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; ${{single.price}}</div>
+            <div class="price"><span style="color:#3D3C3C;">Price:</span>&nbsp; ${{single.cijenaProizvoda}}</div>
             <div class="discount"><span style="
                 background: #FF5367;padding:9px;">20% off for new users!</span></div>
 
@@ -47,7 +41,7 @@
     </div>
 
     <div *ngIf="reviewClicked" class="review-section">
-        <h1 class="review-heading"> {{ reviewNumber }} reviews for {{single.name}} </h1>
+        <h1 class="review-heading"> {{ reviewNumber }} reviews for {{single.imeProizvoda}} </h1>
         <div *ngFor="let review of reviews" class="review_comments">
                 <div class="review_comments_img">
                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
@@ -55,26 +49,26 @@
                 <div class="review_comments_main">
                     <div class="review_comments_main_top">
                             <div>
-                                <h1 style="margin: 5px;">{{review.user}}</h1>
+                                <h1 style="margin: 5px;">{{ checkWho(review.korisnikID) }} {{ imeReview }}</h1>
                             </div>
                             <div class="stars-imgs">
-                                <img *ngIf="review.rating==5" src="https://gyazo.com/b50e0062a8c92776c48b1f28e97a8dc7.png" alt="">
-                                <img *ngIf="review.rating==4" src="https://gyazo.com/46cd360876dca96540002b9601cdf552.png" alt="">
-                                <img *ngIf="review.rating==3" src="https://gyazo.com/4b3e972b8bf9cc86bbf5a4ffc3350d13.png" alt="">
-                                <img *ngIf="review.rating==2" src="https://gyazo.com/8be2d23dbce0e3f0c5b42384476afc9c.png" alt="">
-                                <img *ngIf="review.rating==1" src="https://gyazo.com/d012c2c270358ad929f980274d6aed0e.png" alt="">
+                                <img *ngIf="review.ocjena==5" src="https://gyazo.com/b50e0062a8c92776c48b1f28e97a8dc7.png" alt="">
+                                <img *ngIf="review.ocjena==4" src="https://gyazo.com/46cd360876dca96540002b9601cdf552.png" alt="">
+                                <img *ngIf="review.ocjena==3" src="https://gyazo.com/4b3e972b8bf9cc86bbf5a4ffc3350d13.png" alt="">
+                                <img *ngIf="review.ocjena==2" src="https://gyazo.com/8be2d23dbce0e3f0c5b42384476afc9c.png" alt="">
+                                <img *ngIf="review.ocjena==1" src="https://gyazo.com/d012c2c270358ad929f980274d6aed0e.png" alt="">
                             </div>
                             
                     </div>
                     <div class="review_comments_main_bottom">
-                            <p> {{ review.comment }} </p>
+                            <p> {{ review.sadrzajRecenzije }} </p>
                     </div>
                 </div>
         </div>
-        <h1 *ngIf='!userDetails'>Log in to add your own review.</h1>
-        <div *ngIf='userDetails' class="comment-container">
+        <h1 *ngIf='!isLogged'>Log in to add your own review.</h1>
+        <div *ngIf='isLogged' class="comment-container">
         <h1>Add your own review for this item</h1>
-        <h1>Logged in as {{userDetails.firstname}} <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
+        <h1>Logged in as {{ isLogged }} <span style="color: red; cursor: pointer;">(Not you? Click here to log out)</span> </h1>
         <textarea [(ngModel)]="reviewText"
         placeholder="Your review..." name="reviewText" id="review_input" cols="30" rows="10"></textarea>
        <div class="star-rating">
@@ -92,7 +86,7 @@
        <div (click)="pushReview()" class="submit_review"><a>Submit</a></div>
     </div>
        
-       <div *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
+       <div style="margin-bottom: 30px;" *ngIf="reviewClicked" class="back-button"><a routerLink="/">BACK</a></div>
     </div>
 
 </div>

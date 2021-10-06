@@ -4,14 +4,14 @@ import { UserService } from 'src/app/shared/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 interface Product {
-  imgUrl: string;
-  name: string;
-  price: number;
-  category: string;
-  description: string;
-  size: string;
-  quantity: number;
-  dateAdded: Date;
+  cijenaProizvoda: number;
+  kvantitetProizvoda: number;
+  bojaProizvoda: string;
+  brendProizvoda: string;
+  kategorijaProizvoda: string;
+  imeProizvoda: string;
+  opisProizvoda: string;
+  slikaUrl: string;
 }
 
 @Component({
@@ -33,15 +33,15 @@ export class HomeComponent implements OnInit {
   cartProducts: any;
   mainPage: any;
   loader: any;
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.mainPage = document.getElementById("main-page-container");
-    this.loader = document.getElementById("loader");
-    console.log(this.mainPage);
+    this.loader = document.getElementById("loader"); 
     this.produkti = [];
     this.service.getProducts().subscribe(
       data=> {
         this.products = data as Product[];
-        this.produkti = [...this.products];
+        this.produkti = [...this.products.produkti]; 
+        console.log(this.produkti)
       }
     );
 
@@ -52,21 +52,21 @@ export class HomeComponent implements OnInit {
   }
 
   Search() {
-    this.produkti = [...this.products];
+    this.produkti = [...this.products.produkti];
     if(this.key != ""){
       this.filtered();
 
     }
 
     if(this.key == "all"){
-      this.produkti = [...this.products];
+      this.produkti = [...this.products.produkti];
       this.noResult = false;
     }
   
     this.produkti = this.produkti.filter(
         res => {
           console.log(res);
-          return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+          return res.imeProizvoda.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         }
       )
 
@@ -88,10 +88,10 @@ export class HomeComponent implements OnInit {
   }
 
   filtered(){
-    this.produkti = [...this.products];
+    this.produkti = [...this.products.produkti];
     this.produkti = this.produkti.filter(
       res => {
-        return res.category.toLocaleLowerCase().match(this.key); 
+        return res.kategorijaProizvoda.toLocaleLowerCase().match(this.key); 
       }
     )
     this.checkResults(); 
@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
     this.key = val;
     this.name = "";
     if(this.key=="all") {
-      this.produkti = [...this.products];
+      this.produkti = [...this.products.produkti];
       this.noResult = false;
     } else {
       this.filtered();
@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit {
 id : number;
 url: string;
 openProduct(product:any){
-  this.id = product.productId; 
+  this.id = product.proizvodID; 
   localStorage.setItem('productID', JSON.stringify({
     productId: this.id
   })); 

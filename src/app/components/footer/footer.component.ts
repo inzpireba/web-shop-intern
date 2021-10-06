@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
   adminVerify(){
-    if(localStorage.getItem('role') == "admin"){
+    if(localStorage.getItem('rola') == "admin"){
       return true;
     }else{
       return false;

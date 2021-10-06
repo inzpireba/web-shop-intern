@@ -1,4 +1,4 @@
-
+ 
 .navbar-container {
     font-family: "Rubik";
     font-weight: 700;
@@ -11,10 +11,11 @@
     font-size: 110%;
 }
 .webshop{
-    margin-top: 12px;
+    margin-top: 22px;
     text-align: center;
     font-weight: 900;
     color: #363635;
+    font-family: 'Rubik';
 }
 
 .inzpireLogo{

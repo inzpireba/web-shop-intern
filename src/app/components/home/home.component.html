@@ -16,22 +16,6 @@
     </div>
 </div>
 
-
-<!-- 
-<div class="products-section-container">
-    <div class="product-container" *ngFor="let product of products">
-        <div class="product-image">
-            <img src="{{product.imgUrl}}" alt="">
-        </div>
-        <div class="product-info">
-            <p>{{product.name}}</p>
-            <p class="product-price">${{product.price}}</p>
-        </div>
-    </div>
-</div>
-
--->
-
 <div class="search-container">
     <input autocomplete="off" class="form-control" type="text" placeholder="Search by product name" 
     name="name" [(ngModel)]="name" (ngModelChange)="Search()">    
@@ -41,16 +25,13 @@
     <div *ngIf="noResult" class="product-container">
         <p>Nema rezultata!</p>
     </div>
-    <div (click)="openProduct(product)" *ngFor="let product of produkti | paginate: {itemsPerPage:8,currentPage:p};" class="product-card"><img class="product-img" src="{{product.imgUrl}}" alt="product" width="100%"/>
-        <div *ngIf="(product.quantity==0)" class="soldout-container">
+    <div (click)="openProduct(product)" *ngFor="let product of produkti | paginate: {itemsPerPage:4,currentPage:p};" class="product-card"><img class="product-img" src="{{product.slikaUrl}}" alt="product" width="100%"/>
+        <div *ngIf="(product.kvantitetProizvoda==0)" class="soldout-container">
             <img class="soldout-sticker" src="https://gyazo.com/55f27a92b05156097ecea0628f4e9517.png" alt="">
-        </div>
-        <div *ngIf="(checkDate(product.dateAdded))" class="new-sticker-container">
-            <img class="new-sticker" src="https://gyazo.com/06c6fe4c939ec2c5ee497c51df82f509.png" alt="">
-        </div>
+        </div> 
         <div class="product-info">
-          <h3 class="product-title">{{product.name}}</h3>
-          <div class="product-price"><span class="product-price-new">${{product.price}}</span><span class="product-price-old">$ 456</span></div>
+          <h3 class="product-title">{{product.imeProizvoda}}</h3>
+          <div class="product-price"><span class="product-price-new">${{product.cijenaProizvoda}}</span><span class="product-price-old">$ 456</span></div>
           <div class="product-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam deleniti corrupti quam delectus placeat nihil, nobis dolore maxime ipsum sequi numquam, architecto accusantium quia excepturi, rerum labore harum iure.</div>
           <div class="product-btn">
             <button (click)="openProduct(product)"><i class="fa fa-cart-plus icon"></i>add to cart</button>

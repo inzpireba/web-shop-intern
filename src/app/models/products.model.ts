@@ -1,12 +1,10 @@
 export class Product {
-    name: string = '';
-    price: number = 0;
-    size: string = '';
-    imgUrl: string = '';
-    imgUrl2: string = '';
-    imgUrl3: string = '';
-    description: string = '';
-    category: string = '';
-    quantity: number = 0;
-    dateAdded: Date;
+    cijenaProizvoda: number = 0;
+    kvantitetProizvoda: number = 0;
+    bojaProizvoda: string = '';
+    brendProizvoda: string = '';
+    kategorijaProizvoda: string = '';
+    imeProizvoda: string = '';
+    opisProizvoda: string = '';
+    slikaUrl: string = '';  
 }

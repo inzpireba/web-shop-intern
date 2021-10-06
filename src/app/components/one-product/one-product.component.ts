@@ -3,16 +3,16 @@ import { UserService } from 'src/app/shared/user.service';
 import { ActivatedRoute } from '@angular/router';
 
 interface Review{
-  comment: String,
-  rating: number,
-  user: String,
-  productId: number
+  proizvodID: number,
+  korisnikID: number,
+  sadrzajRecenzije: String,
+  ocjena: number 
 }
 interface CartItem{
-  name: String,
-  price: number,
-  quantity: number,
-  img: String
+  imeProizvoda: String,
+  cijenaProizvoda: number,
+  kvantitetProizvoda: number,
+  slikaUrl: String
 }
 
 @Component({
@@ -29,7 +29,7 @@ export class OneProductComponent{
   userDetails: any;
   reviewClicked: Boolean = false;
   reviewNumber: number = 0;
-  reviews: Review[] = [];
+  reviews: any = [];
   reviewText: String = "";
   databaseReviews: any;
   reviewStarsSelected: number = 0;
@@ -37,36 +37,39 @@ export class OneProductComponent{
   cartItems: CartItem[] = [];
   cartItem: CartItem;
   id: any;
+  isLogged: any;
   ngOnInit() : void{
+    this.service.getUsers().subscribe((response) => {
+      console.log('Response from API is ', response)
+      this.tempUsers = response; 
+    }, (error) => {
+      console.log('Error is ' + error)
+    }) 
+    this.isLogged = localStorage.getItem('ime');
     this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id'); 
   });
 
     this.service.initProduct(this.id).subscribe(
       data=> {
-         this.single = data;
+         this.single = data; 
+         this.single = this.single.singleProduct[0];
+         console.log(this.single)
       }
     );
-    
-
-    if(localStorage.getItem('token') != null){
-      this.service.getUserProfile().subscribe(
-        res => {
-          this.userDetails = res;
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
- 
   }
-
 
   stars:any = document.getElementsByClassName("rated");
   starChosen: Boolean = false;
   addingStars: any;
   loopuntil: any;
+  imeReview: any;
+  tempUsers: any = [];
+
+  checkWho(id){  
+    this.imeReview = this.tempUsers.podaci.filter( x => x.korisnikID == id); 
+    this.imeReview = this.imeReview[0].ime; 
+  }
 
   addRating(passedRating: number){
     this.reviewStarsSelected = passedRating;
@@ -83,15 +86,14 @@ export class OneProductComponent{
     this.service.getReviews().subscribe(
       res => {
         this.databaseReviews = res;
-        this.reviews = [...this.databaseReviews];
+        this.databaseReviews = this.databaseReviews.reviews; 
+        this.reviews = [...this.databaseReviews]; 
         this.reviews = this.reviews.filter(
-          res => {
-            return res.productId == this.single.productId;
-          }
-        );
+          res => res.proizvodID == this.single.proizvodID
+        ); 
         this.reviewNumber = this.reviews.length;
         for(let i=0; i<this.reviewNumber; i++){
-          this.averageRating+= this.reviews[i].rating;
+          this.averageRating+= this.reviews[i].ocjena;
         }
         this.averageRating = Math.round(this.averageRating/this.reviewNumber);
       },
@@ -99,16 +101,20 @@ export class OneProductComponent{
     );
   }
 
+  passUserID: any;
 
   pushReview(){
+    this.passUserID = this.tempUsers.podaci.filter( x => x.ime == this.isLogged)
+    this.passUserID = this.passUserID[0].korisnikID
+    console.log(this.passUserID)
     if(this.reviewText.length < 5 || this.reviewStarsSelected == 0) {
       alert("Problem. Short text or stars not chosen.");
     } else {
     this.oneReview = {
-      comment: this.reviewText,
-      rating: this.reviewStarsSelected,
-      user: this.userDetails.firstname,
-      productId: this.single.productId
+      proizvodID: +this.single.proizvodID,
+      korisnikID: +this.passUserID,
+      sadrzajRecenzije: this.reviewText,
+      ocjena: +this.reviewStarsSelected
     }
     this.service.addReview(this.oneReview);
     this.reviews.push(this.oneReview);
@@ -129,6 +135,14 @@ export class OneProductComponent{
       this.addingStars = [];
     },100)
   }
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(this.oneReview)
+  }
+  fetch('http://localhost:5000/addReview',options)
 }
 exists: boolean = false;
 temp: any;
@@ -137,18 +151,17 @@ pushToCart(product: any){
   this.cartItems = JSON.parse(localStorage.getItem("cartproducts") || "[]");
   this.temp = document.getElementById("productQty");
   this.productQuantity = parseInt(this.temp.value);
-  this.qty = product.price*this.productQuantity;
+  this.qty = product.cijenaProizvoda*this.productQuantity;
   console.log(this.cartItems);
   this.cartItem = {
-    img: product.imgUrl,
-    name: product.name,
-    price: this.qty,
-    quantity: this.productQuantity
+    slikaUrl: product.slikaUrl,
+    imeProizvoda: product.imeProizvoda,
+    cijenaProizvoda: product.cijenaProizvoda,
+    kvantitetProizvoda: this.productQuantity
   }
-
   for(let i=0; i<this.cartItems.length; i++){
-    if(this.cartItems[i].name == this.cartItem.name){
-      this.cartItems[i].quantity+= this.cartItem.quantity;
+    if(this.cartItems[i].imeProizvoda == this.cartItem.imeProizvoda){
+      this.cartItems[i].kvantitetProizvoda+= this.cartItem.kvantitetProizvoda;
       this.exists = true;
     }
   }
@@ -156,7 +169,7 @@ pushToCart(product: any){
     this.cartItems.push(this.cartItem);
   }
   localStorage.setItem("cartproducts", JSON.stringify(this.cartItems));
- 
+  location.reload();
 } 
 
 imgId: number = 1;

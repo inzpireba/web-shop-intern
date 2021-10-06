@@ -2,8 +2,8 @@
 
 
 <div class="top-header" routerLink="/">
-    <img src="https://gyazo.com/4c92ee96d92f614880142af98b531471.png">
-    <h1 class="top-header-desc">INZPIRE WEB SHOP</h1>
+    <img src="https://ptf.unze.ba/wp/wp-content/uploads/2018/02/Logo-PTF018.png">
+    <h1 class="top-header-desc" style="font-family: 'Rubik';">WEBSHOP</h1>
 </div>
 <div class="container">
     <div class="admin-image"><img src="https://i.imgur.com/XyywY9v.png"></div>
@@ -21,7 +21,7 @@
 
 <div class="welcome-back" *ngIf="pageID==0">
     <div class="welcome-back-text">
-        <p>Welcome back, {{userDetails.firstname}}!</p><img src="https://image.flaticon.com/icons/png/512/1465/1465611.png">
+        <p>Welcome back, {{  userDetails }}!</p><img src="https://image.flaticon.com/icons/png/512/1465/1465611.png">
     </div>
 </div>
 
@@ -45,17 +45,17 @@
                 <p class="info_p">Options</p>
             </div>
             <hr>
-            <div class="user" *ngFor="let user of users | paginate: {itemsPerPage:6,currentPage:p};">
+            <div class="user" *ngFor="let user of users | paginate: {itemsPerPage:3,currentPage:1};">
                 <div class="user_img_container">
                     <img src="https://cdn3.iconfinder.com/data/icons/communication-232/384/Account_circle-512.png" alt="">
                 </div>
-                <p>{{user.userId}}</p>
-                <p>{{user.firstname}}</p>
+                <p>{{user.korisnikID}}</p>
+                <p>{{user.ime}}</p>
                 <p style="width: 28%">{{user.email}}</p>
-                <p>{{user.role}}</p>
+                <p>{{user.rola}}</p>
                 <p>Active</p>
                 <div class="user_options">
-                    <i (click)="deleteUser(user)" class="fa fa-trash" aria-hidden="true"></i>
+                    <i *ngIf="user.rola != 'adminRola'" (click)="deleteUser(user)" class="fa fa-trash" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
@@ -91,13 +91,13 @@
             <hr>
             <div class="user" *ngFor="let product of products | paginate: {itemsPerPage:6,currentPage:p};">
                 <div class="user_img_container">
-                    <img src="{{product.imgUrl}}" alt="">
+                    <img src="{{product.slikaUrl}}" alt="">
                 </div>
-                <p>{{product.productId}}</p>
-                <p style="width: 28%">{{product.name}}</p>
-                <p >{{product.price}}</p>
-                <p>{{product.quantity}}</p>
-                <p>{{product.category}}</p>
+                <p>{{product.proizvodID}}</p>
+                <p style="width: 28%">{{product.imeProizvoda}}</p>
+                <p >{{product.cijenaProizvoda}}</p>
+                <p>{{product.kvantitetProizvoda}}</p>
+                <p>{{product.kategorijaProizvoda}}</p>
                 <div class="user_options">
                     <i (click)="editProduct(product)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <i (click)="deleteProduct(product)" class="fa fa-trash" aria-hidden="true"></i>
@@ -117,17 +117,17 @@
     <h1 class="modal_heading">Edit Product</h1>
     <div class="line"></div>
     <label for="productName" >Name</label>
-    <input id="productName" placeholder="Enter new name..." value="{{editedproduct.name}}" type="text">
+    <input id="productName" placeholder="Enter new name..." value="{{editedproduct.imeProizvoda}}" type="text">
 
     <label for="productPrice">Price</label>
-    <input id="productPrice" value="{{editedproduct.price}}" placeholder="Enter price..." type="text">
+    <input id="productPrice" value="{{editedproduct.cijenaProizvoda}}" placeholder="Enter price..." type="text">
 
     <label for="productQuantity" >Quantity</label>
-    <input id="productQuantity" value="{{editedproduct.quantity}}" placeholder="Enter qty..." type="text">
+    <input id="productQuantity" value="{{editedproduct.kvantitetProizvoda}}" placeholder="Enter qty..." type="text">
 
     <label for="productCategory" >Category</label>
     <select name="cars" id="productCategory">
-        <option value="{{editedproduct.category}}" selected="{{editedproduct.category}}">CURRENT: {{editedproduct.category}} </option>
+        <option value="{{editedproduct.kategorijaProizvoda}}" selected="{{editedproduct.kategorijaProizvoda}}">CURRENT: {{editedproduct.kategorijaProizvoda}} </option>
         <option value="jackets">Jackets</option>
         <option value="tops">Tops</option>
         <option value="skirts">Skirts</option>
@@ -135,11 +135,11 @@
         <option value="shirts">Shirts</option>
       </select>
       <label for="prod-description">Description</label>
-      <textarea name="" id="prod-description" cols="30" rows="4" value="{{editedproduct.description}}"></textarea>
+      <textarea name="" id="prod-description" cols="30" rows="4" value="{{editedproduct.opisProizvoda}}"></textarea>
 
       <div class="buttons-modal">
-        <a (click)="saveProduct()" class="btn">Save changes</a>
-        <a href="" class="btn">Discard</a>
+        <a (click)="saveProduct(editedproduct.proizvodID)" class="btn">Save changes</a>
+        <a (click)="modalOpened = !modalOpened" class="btn">Discard</a>
       </div>
 </div>
 
@@ -156,7 +156,7 @@
         </div>
         <div class="price-container">
             <label for="productPrice">Price</label>
-            <input id="productPrice" placeholder="Enter price..." type="text">
+            <input id="productPrice" placeholder="Enter price..." type="number">
         </div>  
     </div>
 
@@ -186,15 +186,9 @@
       <label for="imgUrl-input">Main product image (required, direct link, res: 500x500)</label>
       <input id="imgUrl-input"  placeholder="Enter main image link..." type="text">
 
-      <label for="imgUrl2-input" >Main product image (optional, recommended resolution 500x500px)</label>
-      <input id="imgUrl2-input"  placeholder="Enter image link..." type="text">
-
-      <label for="imgUrl3-input" >Main product image (optional, recommended resolution 500x500px)</label>
-      <input id="imgUrl3-input"  placeholder="Enter image link..." type="text">
-
-      <div class="buttons-modal">
+   <div class="buttons-modal">
         <a (click)="saveAddedProduct()" class="btn">Add product</a>
-        <a href="" class="btn">Discard</a>
+        <a (click)="addModal = !addModal" class="btn">Discard</a>
       </div>
 </div>
 
@@ -216,7 +210,7 @@
     <h1 class="delete_modal_heading">Are you sure you want to delete {{userDeletion}}?</h1>
       <div class="buttons-delete">
         <a (click)="deleteUserDB()" class="btn-modals">Yes</a>
-        <a href="" class="btn-modals">No</a>
+        <a (click)="deleteUserModal = !deleteUserModal" class="btn-modals">No</a>
       </div>
 </div>
 </div>

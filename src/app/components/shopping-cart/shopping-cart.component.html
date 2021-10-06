@@ -19,9 +19,11 @@
             <div class="cart-header-right"><span>Qty</span> <span>Price</span><span>Total</span></div>
         </div>
         <div class="img-description" *ngFor='let product of cartProducts'>
-            <div class="product-image"><img src="{{product.img}}"></div>
-            <div class="desc-text">Product name: {{product.name}}</div>
-            <div class="product-info"><span><button class="qty-buttons">{{product.quantity}}</button></span> <span>${{product.price}}</span> &nbsp;&nbsp;&nbsp;<span>${{product.price*product.quantity}}</span></div>
+            <div class="product-image"><img src="{{product.slikaUrl}}"></div>
+            <div class="desc-text">Product name: {{product.imeProizvoda}}</div>
+            <div class="product-info"><span><button class="qty-buttons">{{product.kvantitetProizvoda}}</button></span> <span>${{product.cijenaProizvoda}}
+                
+            </span> &nbsp;&nbsp;&nbsp;<span>${{product.cijenaProizvoda*product.kvantitetProizvoda}}</span></div>
         </div>
     </div>
     <div class="summary-main-container">

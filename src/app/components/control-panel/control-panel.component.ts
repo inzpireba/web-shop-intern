@@ -2,27 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 
 interface Product {
-  name: string;
-  price: number;
-  category: string;
-  description: string;
-  quantity: number;
-  dateAdded: Date;
-  productId: number;
-  imgUrl: string;
-  imgUrl2: string;
-  imgUrl3: string;
+  cijenaProizvoda: string; 
+  bojaProizvoda: string; 
+  kvantitetProizvoda: number; 
+  brendProizvoda: string;
+  kategorijaProizvoda: string;
+  imeProizvoda: string;
+  opisProizvoda: string;
+  slikaUrl: string;
 }
 interface AddedProduct {
-  name: string;
-  price: number;
-  category: string;
-  description: string;
-  quantity: number;
-  dateAdded: Date;
-  imgUrl: string;
-  imgUrl2: string;
-  imgUrl3: string;
+  cijenaProizvoda: string; 
+  bojaProizvoda: string; 
+  kvantitetProizvoda: number; 
+  brendProizvoda: string;
+  kategorijaProizvoda: string;
+  imeProizvoda: string;
+  opisProizvoda: string;
+  slikaUrl: string;
 }
 
 
@@ -44,9 +41,11 @@ export class ControlPanelComponent implements OnInit {
   p: number;
   pageID: number=0;
   ngOnInit(): void {
+    this.userDetails = localStorage.getItem('ime');
     this.service.getUsers().subscribe(
       res=>{
-        this.users = res;
+        this.users = res; 
+        this.users = this.users.podaci;
       },
       err=>{console.log(err);
       }
@@ -54,27 +53,17 @@ export class ControlPanelComponent implements OnInit {
     this.service.getProducts().subscribe(
       res=>{
         this.products = res;
+        this.products = this.products.produkti;
       },
       err=>{console.log(err);
       }
     );
-    if(localStorage.getItem('token') != null){
-      this.service.getUserProfile().subscribe(
-        res => {
-          this.userDetails = res;
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
   }
 
   editedproduct: any;
   editProduct(product: any){
     this.modalOpened = true;
-    this.editedproduct = product;
-
+    this.editedproduct = product; 
   }
   nameTemp: any;
   descTemp: any;
@@ -82,70 +71,65 @@ export class ControlPanelComponent implements OnInit {
   priceTemp: any;
   categoryTemp: any;
   body: Product;
-  imgUrl: any;
-  imgUrl2: any;
-  imgUrl3: any;
-  setProduct(){
-    var today = new Date();
-    this.nameTemp = document.getElementById('productName');
+  imgUrl: any; 
+  editProdID: any;
+  setProduct(){  
     this.descTemp = document.getElementById('prod-description');
     this.quantityTemp = document.getElementById('productQuantity');
     this.priceTemp = document.getElementById('productPrice');
     this.categoryTemp = document.getElementById('productCategory');
-    this.body = {
-      productId: this.editedproduct.productId, 
-      name: this.nameTemp.value, 
-      description: this.descTemp.value, 
-      quantity: this.quantityTemp.value, 
-      price: this.priceTemp.value, 
-      dateAdded: today, 
-      category: this.categoryTemp.value,
-      imgUrl: this.editedproduct.imgUrl,
-      imgUrl2: this.editedproduct.imgUrl2,
-      imgUrl3: this.editedproduct.imgUrl3
-    };
+    this.imgUrl = document.getElementById('imgUrl-input'); 
+    this.nameTemp = document.getElementById('productName'); 
+    this.editedproduct = {
+      cijenaProizvoda: this.priceTemp.value,  
+      kvantitetProizvoda: this.quantityTemp.value,  
+      kategorijaProizvoda: this.categoryTemp.value,
+      imeProizvoda: this.nameTemp.value, 
+      opisProizvoda: this.descTemp.value
+    };  
   }
-
-  saveProduct(){
+  tempImg: any;
+  saveProduct(id: any){
+    this.editProdID = id; 
     this.setProduct();
     this.pageID = 2;
     this.modalOpened = false;
-    this.service.editProduct(this.editedproduct.productId, this.body);
+    this.tempImg = this.products.find( x => x.proizvodID == id)
+    this.editedproduct.slikaUrl = this.tempImg.slikaUrl; 
+    this.service.editProduct(this.editProdID, this.editedproduct);
   }
 
   openAddModal(){
     this.addModal = true;
   }
+
   addedProduct: AddedProduct;
-  saveAddedProduct() {
-    var today = new Date();
-    this.nameTemp = document.getElementById('productName');
+  saveAddedProduct() { 
     this.descTemp = document.getElementById('prod-description');
     this.quantityTemp = document.getElementById('productQuantity');
     this.priceTemp = document.getElementById('productPrice');
     this.categoryTemp = document.getElementById('productCategory');
-    this.imgUrl = document.getElementById('imgUrl-input');
-    this.imgUrl2 = document.getElementById('imgUrl2-input');
-    this.imgUrl3 = document.getElementById('imgUrl3-input');
+    this.imgUrl = document.getElementById('imgUrl-input'); 
+    this.nameTemp = document.getElementById('productName'); 
     this.addedProduct = {
-      name: this.nameTemp.value, 
-      description: this.descTemp.value, 
-      quantity: this.quantityTemp.value, 
-      price: this.priceTemp.value, 
-      dateAdded: today, 
-      category: this.categoryTemp.value,
-      imgUrl: this.imgUrl.value,
-      imgUrl2: this.imgUrl2.value,
-      imgUrl3: this.imgUrl3.value
-    };
+      cijenaProizvoda: this.priceTemp.value, 
+      bojaProizvoda: 'n',
+      kvantitetProizvoda: this.quantityTemp.value, 
+      brendProizvoda: 'n',
+      kategorijaProizvoda: this.categoryTemp.value,
+      imeProizvoda: this.nameTemp.value, 
+      opisProizvoda: this.descTemp.value, 
+      slikaUrl: this.imgUrl.value   
+    }; 
     this.service.addProduct(this.addedProduct);
   }
+
   productDeletion: any;
   deleteId: number;
   deleteProduct(product: any){
-    this.productDeletion = product.name;
+    this.productDeletion = product.imeProizvoda;
     this.deleteModal = true;
-    this.deleteId = product.productId;
+    this.deleteId = product.proizvodID;
   }
   delete(){
     this.service.deleteProduct(this.deleteId);
@@ -154,13 +138,13 @@ export class ControlPanelComponent implements OnInit {
   userDeletion: any;
   deleteUserId: number;
   deleteUser(user: any){
-    this.userDeletion = user.firstname + " " + user.lastname;
+    this.userDeletion = user.ime + " " + user.prezime;
     this.deleteUserModal = true;
-    this.deleteUserId = user.userId;
+    this.deleteUserId = user.korisnikID;
   }
-  deleteUserDB(){
+  deleteUserDB(){ 
     this.service.deleteUser(this.deleteUserId);
-    this.deleteUserModal = false;
+    this.deleteUserModal = false; 
   }
 
 }

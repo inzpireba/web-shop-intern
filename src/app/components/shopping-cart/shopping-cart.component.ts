@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 interface CartItem{
-  name: String,
-  price: number,
-  quantity: number,
-  img: String
+  imeProizvoda: String,
+  cijenaProizvoda: number,
+  kvantitetProizvoda: number,
+  slikaUrl: String
 }
 
 @Component({
@@ -23,8 +23,8 @@ export class ShoppingCartComponent implements OnInit {
       this.cartProducts = JSON.parse(localStorage.getItem("cartproducts") || "[]");
       console.log(this.cartProducts)
       for(let i=0; i<this.cartProducts.length; i++){
-        this.totalQty += this.cartProducts[i].quantity;
-        this.totalPrice += this.cartProducts[i].price*this.cartProducts[i].quantity;
+        this.totalQty += this.cartProducts[i].kvantitetProizvoda;
+        this.totalPrice += this.cartProducts[i].cijenaProizvoda*this.cartProducts[i].kvantitetProizvoda;
       }
     }
   }

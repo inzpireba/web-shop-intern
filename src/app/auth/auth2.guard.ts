@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class Auth2Guard implements CanActivate {
   constructor(private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):  boolean {
-      if(localStorage.getItem('rola') == "admin"){
-        return true;
-      }else{
+      if(localStorage.getItem('rola')=='korisnik' || localStorage.getItem('rola')=='admin'){
         this.router.navigateByUrl('/');
         return false;
+      }else{
+        return true;
       }
     
   }

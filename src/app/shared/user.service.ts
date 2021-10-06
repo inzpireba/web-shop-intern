@@ -19,41 +19,14 @@ export class UserService {
   readonly reviewURL = 'http://localhost:50467/api/Reviews';
   user: User;
   review: any;
-  addUser(user: User){
-    this.http.post(this.URL, user).subscribe(
-      res => {
-        this.toastr.success("Registration successful.");
-        setTimeout(() => {
-          this.router.navigateByUrl('login')
-        }, 2000);
-      },
-      err => {
-        console.log(err);
-        this.toastr.error("Something went wrong!")
-      }
-    )
-  }
 
-  loginUser(user: User){
-    this.http.post(this.LoginURL, user).subscribe(
-      (res: any) => {
-        localStorage.setItem('token', res.token);
-        this.toastr.success("Login successful.");
-        setTimeout(() => {
-          this.router.navigateByUrl('')
-        }, 2000);
-      },
-      err => {
-        if(err.status == 400){
-          this.toastr.error('Incorrect username or password');
-        }else{
-          console.log(err);
-        }
-      }
-    )
-  }
+  
+  getUsers(){
+    return this.http.get('http://localhost:5000/getUsers');
+  } 
+      
   getProducts(){
-    return this.http.get(this.productURL);
+    return this.http.get('http://localhost:5000/getProducts');
   }
   single: any;
   test: any;
@@ -63,7 +36,7 @@ export class UserService {
     object = JSON.parse(object);
     this.test = object; 
     this.productId = this.test.productId; */
-    return this.http.get(`${this.productURL}/${id}`);
+    return this.http.get(`http://localhost:5000/getProducts/${id}`);
   }
 
   getUserProfile(){
@@ -78,26 +51,27 @@ export class UserService {
     );
   }
   getReviews(){
-    return this.http.get(this.reviewURL);
+    return this.http.get('http://localhost:5000/getReviews');
   }
 
-  getUsers(){
-    return this.http.get(this.URL);
-  }
   editUser(id: number, body: any){
     this.http.put(`${this.URL}/${id}`, body);
   }
-  editProduct(id: number, body: any){
-    this.http.put(`${this.productURL}/${id}`, body).subscribe(
+  editProduct(id: number, body: any){ 
+    this.http.put(`http://localhost:5000/editProduct/${id}`, body).subscribe(
       res=>{ 
         this.toastr.success(`Successfully edited ${body.name}`);
         
       },
       err=>{console.log(err)}
     );
+    setTimeout(()=>{
+      location.reload();
+    },1000)
+    this.toastr.success("Product successfully edited.");
   }
-  addProduct(product: any){
-    this.http.post(this.productURL, product).subscribe(
+  addProduct(product: any){ 
+    this.http.post('http://localhost:5000/addProduct', product).subscribe(
       res=>{
         console.log(res);
       },
@@ -105,9 +79,13 @@ export class UserService {
         console.log(err);
       }
     )
+    setTimeout(()=>{
+      location.reload();
+    },1000)
+    this.toastr.success("Product successfully added.");
   }
   deleteProduct(id: number){
-    this.http.delete(`${this.productURL}/${id}`).subscribe(
+    this.http.delete(`http://localhost:5000/deleteProduct/${id}`).subscribe(
       res=>{
         this.toastr.success("Product successfully deleted.");
       },
@@ -115,9 +93,13 @@ export class UserService {
         console.log(err);
       }
     );
+    setTimeout(()=>{
+      location.reload();
+    },1000)
+    this.toastr.success("Product successfully deleted.");
   }
-  deleteUser(id: number){
-    this.http.delete(`${this.URL}/${id}`).subscribe(
+  deleteUser(id: number){ 
+    this.http.delete(`http://localhost:5000/deleteUser/${id}`).subscribe(
       res=>{
         this.toastr.success("User successfully deleted.");
       },
@@ -125,6 +107,10 @@ export class UserService {
         console.log(err);
       }
     );
+    setTimeout(()=>{
+      location.reload();
+    },1000)
+    this.toastr.success("User successfully deleted.");
   }
-    
+
 }

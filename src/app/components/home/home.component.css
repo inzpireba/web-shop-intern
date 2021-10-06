@@ -176,6 +176,7 @@
   .product-img{
       transition: 0.3s;
       cursor: pointer;
+      height: 300px; 
   }
   .product-img:hover{
       transform: translateY(-10px);

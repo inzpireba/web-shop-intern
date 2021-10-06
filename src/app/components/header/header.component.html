@@ -1,8 +1,8 @@
 <div class="navbar-container">
     <div class="navbar-left">
         <div class="logo-text" routerLink="/">
-            <img class="inzpireLogo" src="https://gyazo.com/96e856086eee4a860a7b770b8a17899d.png" alt="">
-            <h1 class="webshop">inzpire</h1>
+            <img class="inzpireLogo" src="https://ptf.unze.ba/wp/wp-content/uploads/2018/02/Logo-PTF018.png" alt="">
+            <h1 class="webshop" > Webshop </h1>
         </div>
       
         <p id="contact_us" class="navbar-p"> <i class="fa fa-phone" aria-hidden="true"></i> Contact us </p>
@@ -13,12 +13,12 @@
             <div *ngIf="cartProducts.length > 0" class="cart-items-container">
                 <div class="cart-item" *ngFor="let product of cartProducts">
                     <div class="img-container">
-                        <img src="{{product.img}}" alt="">
+                        <img src="{{product.slikaUrl}}" alt="">
                     </div>
                     <div class="info-container">
-                        <p> <b> Product name: {{product.name}} </b> </p>    
-                        <p>Price: ${{product.price}} </p>   
-                        <p>Quantity: {{product.quantity}}</p>
+                        <p> <b> Product name: {{product.imeProizvoda}} </b> </p>    
+                        <p>Price: ${{product.cijenaProizvoda}} </p>   
+                        <p>Quantity: {{product.kvantitetProizvoda}}</p>
                     </div>
                     <div class="close">
                         <a (click)="removeFromCart(product)">✖</a>
@@ -42,13 +42,13 @@
 <div class="hero-container">
     <div class="hero-inside">
         <div class="hero-heading-container">
-            <h1 class="hero-heading">Inzpire webshop</h1>
-            <h1 *ngIf="userDetails" class="hero-user">Welcome back, <strong>{{userDetails.firstname}}</strong></h1>
+            <h1 class="hero-heading">Online shop</h1>
+            <h1 *ngIf="userDetails" class="hero-user">Welcome back, <strong>{{userDetails}}</strong></h1>
         </div>
         <div class="hero-buttons-container" *ngIf="userDetails">
             <a (click)="logout()" class="hero-buttons">Log out</a>
         </div>
-        <div class="hero-buttons-container" *ngIf="!userDetails">
+        <div class="hero-buttons-container" *ngIf="userDetails == undefined">
             <a routerLink='/register' class="hero-buttons">REGISTER</a>
             <a routerLink='/login' class="hero-buttons">LOGIN</a>
         </div>

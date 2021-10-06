@@ -13,30 +13,66 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   hide : boolean = true;
-  constructor(public service: UserService, public router: Router) {
+  constructor(public service: UserService, public router: Router,private toastr:ToastrService) {
   }
-  
-  emailAuthorized: boolean = false;
-  pwAuthorized: boolean = false;
-  loginUser = new User();
-  parsedJson: any; 
+   
+  loginUser = new User(); 
   loginBtn: any; 
-  readonly URL = 'http://localhost:50467/api/User';
+  loginApproved: Boolean = false;
+  podaci:any; 
+
   onSubmit(data:any){
+
     this.loginUser.email = data.uname;
     this.loginUser.password = data.password;
     this.loginBtn = document.getElementById("loginBtn");
+
+    for(let i=0;i<this.podaci.podaci.length;i++) {
+
+      if(this.loginUser.email == this.podaci.podaci[i].email && 
+        this.loginUser.password == this.podaci.podaci[i].sifra) {
+
+          this.loginApproved = true;
+
+          if(this.podaci.podaci[i].rola == 'adminRola'){
+              localStorage.setItem('rola', 'admin');
+              localStorage.setItem('ime', this.podaci.podaci[i].ime);
+          }
+
+          if(this.podaci.podaci[i].rola == 'korisnikRola'){
+            localStorage.setItem('rola', 'korisnik');
+            localStorage.setItem('ime', this.podaci.podaci[i].ime);
+          }
+
+      }
+    }
+
     if(this.loginBtn.classList.contains('disabled-button')){
       
     }else{
-      this.service.loginUser(this.loginUser);
+        if(this.loginApproved) {
+        this.toastr.success("Login successful.");
+        setTimeout(() => {
+          this.router.navigateByUrl('')
+        }, 2000); 
+      }
+      else {
+          this.toastr.error('Incorrect username or password');
+        }
     }
 
   }
-  ngOnInit(): void {
-    /*if(localStorage.getItem('token') != null){
-      this.router.navigateByUrl('');
-    } */
+  ngOnInit(): void { 
+    this.getDataFromAPI(); 
+  }
+  getDataFromAPI(){
+    this.service.getUsers()
+    .subscribe((response) => {
+      console.log('Response from API is ', response)
+      this.podaci = response; 
+    }, (error) => {
+      console.log('Error is ' + error)
+    })
   }
 
 }
